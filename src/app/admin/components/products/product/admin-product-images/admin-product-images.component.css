@@ -1,0 +1,70 @@
+.gallery-thumbnail img{
+  width: 140px;
+  height: 140px;
+  margin: 10px;
+  vertical-align: middle;
+  z-index: 1009;
+  position: relative;
+  display: inline-block;
+}
+.upload-new {
+  width: 140px;
+  height: 140px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 45px;
+  border-style: dashed;
+  border-width: thin;
+  border-color: #b5cacf;
+  background-color: #fafafa;
+  color: #6c7681;
+}
+
+.upload-new:hover {
+  border-color: #168ad8;
+  cursor: pointer;
+
+}
+
+.upload-new a{
+  color: #6c7681;
+  margin-top: 10px;
+}
+
+
+
+.product-pic {
+  position: relative;
+  display: inline-block;
+}
+
+.product-pic:hover .edit {
+  display: block;
+}
+
+.edit {
+  padding-top: 15px;
+  padding-right: 20px;
+  position: absolute;
+  z-index: 1010;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  display: none;
+}
+.edit a {
+  color: #000;
+}
+
+.img-thumbnail:hover {
+  box-shadow: 0 25px 50px -25px rgba(0, 0, 0, .5) inset;
+  -webkit-box-shadow: 0 25px 50px -25px rgba(0, 0, 0, .5) inset;
+  -moz-box-shadow: 0 25px 50px -25px rgba(0, 0, 0, .5) inset;
+  -o-box-shadow: 0 25px 50px -25px rgba(0, 0, 0, .5) inset;
+}
+
+.mdb-sortable {
+  z-index: 1099;
+}

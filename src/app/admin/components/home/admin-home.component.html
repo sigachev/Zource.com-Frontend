@@ -1,0 +1,457 @@
+<div class="row">
+  <div class="col">
+
+    <section id="section1">
+      <h5>Input Box</h5>
+      <p class="text-muted font-size-sm">
+        A basic form control with disabled and readonly mode.
+      </p>
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+            <input type="text" class="form-control" placeholder="Input box">
+            <textarea class="form-control" rows="2" placeholder="Textarea"></textarea>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+            <input type="text" class="form-control" placeholder="Input box (disabled)" disabled="">
+            <textarea class="form-control" rows="2" placeholder="Textarea (readonly)" readonly=""></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section2">
+      <h5>Input with an Icon</h5>
+      <p class="text-muted font-size-sm">
+        Input support an icon on either left or right position.
+      </p>
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+                  <span class="input-icon">
+                    <i class="material-icons">mail_outline</i>
+                    <input type="email" class="form-control" placeholder="Email address">
+                  </span>
+            <span class="input-icon">
+                    <i class="material-icons">lock</i>
+                    <input type="password" class="form-control" placeholder="Password">
+                  </span>
+            <span class="input-icon">
+                    <i class="material-icons">search</i>
+                    <input type="search" class="form-control" placeholder="Search...">
+                  </span>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+                  <span class="input-icon input-icon-right">
+                    <i class="material-icons">mail_outline</i>
+                    <input type="email" class="form-control" placeholder="Email address">
+                  </span>
+            <span class="input-icon input-icon-right">
+                    <i class="material-icons">lock</i>
+                    <input type="password" class="form-control" placeholder="Password">
+                  </span>
+            <span class="input-icon input-icon-right">
+                    <i class="material-icons">search</i>
+                    <input type="search" class="form-control" placeholder="Search...">
+                  </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section3">
+      <h5>Select Menu</h5>
+      <p class="text-muted font-size-sm">
+        Custom select menus need only a custom class, <code>.custom-select</code> to trigger the custom styles.
+      </p>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="list-with-gap">
+            <select class="custom-select">
+              <option selected="">Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <select class="custom-select" disabled="">
+              <option selected="">Disabled select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section4">
+      <h5>File Browser</h5>
+      <p class="text-muted font-size-sm">
+        For even more customization and cross browser consistency, use our completely custom file browser element to replace the browser defaults.
+      </p>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="list-with-gap">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile" multiple="">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile2" multiple="" disabled="">
+              <label class="custom-file-label" for="customFile2">Disabled</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section5">
+      <h5>Floating Labels</h5>
+      <p class="text-muted font-size-sm">
+        Build form controls with floating labels via the <code>:placeholder-shown</code> pseudo-element.
+      </p>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="list-with-gap">
+            <div class="floating-label">
+              <input type="text" class="form-control" id="floatingUsername" placeholder="Username">
+              <label for="floatingUsername">Username</label>
+            </div>
+            <div class="floating-label">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <div class="floating-label">
+              <input type="text" class="form-control" id="floatingAddress" placeholder="Address">
+              <label for="floatingAddress">Address</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="list-with-gap">
+            <div class="floating-label input-icon">
+              <i class="material-icons">mail_outline</i>
+              <input type="text" class="form-control" id="floatingEmail" placeholder="Email address">
+              <label for="floatingEmail">Email address</label>
+            </div>
+            <div class="floating-label input-icon">
+              <i class="material-icons">lock</i>
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <div class="floating-label input-icon input-icon-right">
+              <i class="material-icons">search</i>
+              <input type="text" class="form-control" id="floatingAddress" placeholder="Address">
+              <label for="floatingAddress">Address</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section6">
+      <h5>Sizing</h5>
+      <p class="text-muted font-size-sm">
+        Set heights using classes like <code>.form-control-lg</code> and <code>.form-control-sm</code>.<br>
+        For custom select, set heights using classes like <code>.custom-select-lg</code> and <code>.custom-select-sm</code>.
+      </p>
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+            <input class="form-control form-control-lg" type="text" placeholder="Input box large">
+            <input class="form-control" type="text" placeholder="Default input box">
+            <input class="form-control form-control-sm" type="text" placeholder="Input box small">
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+                  <span class="input-icon input-icon-lg">
+                    <i class="material-icons">mail_outline</i>
+                    <input type="text" class="form-control form-control-lg" placeholder="Input icon">
+                  </span>
+            <span class="input-icon">
+                    <i class="material-icons">mail_outline</i>
+                    <input type="text" class="form-control" placeholder="Input icon">
+                  </span>
+            <span class="input-icon input-icon-sm">
+                    <i class="material-icons">mail_outline</i>
+                    <input type="text" class="form-control form-control-sm" placeholder="Input icon">
+                  </span>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+            <select class="custom-select custom-select-lg">
+              <option selected="">Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <select class="custom-select">
+              <option selected="">Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <select class="custom-select custom-select-sm">
+              <option selected="">Open this select menu</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+            <div class="custom-file form-control-lg">
+              <input type="file" class="custom-file-input" id="customFile3" multiple="">
+              <label class="custom-file-label" for="customFile3">Choose file</label>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile4" multiple="">
+              <label class="custom-file-label" for="customFile4">Choose file</label>
+            </div>
+            <div class="custom-file form-control-sm">
+              <input type="file" class="custom-file-input" id="customFile5" multiple="">
+              <label class="custom-file-label" for="customFile5">Choose file</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+            <div class="floating-label floating-label-lg">
+              <input type="text" class="form-control form-control-lg" id="floatingUsernameLg" placeholder="Floating label">
+              <label for="floatingUsernameLg">Floating label</label>
+            </div>
+            <div class="floating-label">
+              <input type="text" class="form-control" id="floatingUsernameDefault" placeholder="Floating label">
+              <label for="floatingUsernameDefault">Floating label</label>
+            </div>
+            <div class="floating-label floating-label-sm">
+              <input type="text" class="form-control form-control-sm" id="floatingUsernameSm" placeholder="Floating label">
+              <label for="floatingUsernameSm">Floating label</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <div class="list-with-gap">
+            <div class="floating-label floating-label-lg input-icon input-icon-lg">
+              <i class="material-icons">mail_outline</i>
+              <input type="text" class="form-control form-control-lg" id="floatingIconUsernameLg" placeholder="Floating label">
+              <label for="floatingIconUsernameLg">Floating label</label>
+            </div>
+            <div class="floating-label input-icon">
+              <i class="material-icons">mail_outline</i>
+              <input type="text" class="form-control" id="floatingIconUsernameDefault" placeholder="Floating label">
+              <label for="floatingIconUsernameDefault">Floating label</label>
+            </div>
+            <div class="floating-label floating-label-sm input-icon input-icon-sm">
+              <i class="material-icons">mail_outline</i>
+              <input type="text" class="form-control form-control-sm" id="floatingIconUsernameSm" placeholder="Floating label">
+              <label for="floatingIconUsernameSm">Floating label</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section7">
+      <h5>Autosize Textarea</h5>
+      <p class="text-muted font-size-sm">
+        Autosize is a small, stand-alone script to automatically adjust textarea height to fit text.
+      </p>
+      <div class="row">
+        <div class="col-sm-6 mb-3">
+          <textarea class="form-control autosize" placeholder="Autosize Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 110px;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum accusamus odio expedita officiis rerum nostrum dolore odit similique inventore alias!</textarea>
+        </div>
+        <div class="col-sm-6 mb-3">
+          <textarea class="form-control autosize" placeholder="Autosize Textarea" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 62px;"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section8">
+      <h5>Checkboxes</h5>
+      <p class="text-muted font-size-sm">
+        For even more customization and cross browser consistency, use our completely custom checkbox element to replace the browser defaults.
+      </p>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1">
+        <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck2" disabled="">
+        <label class="custom-control-label" for="customCheck2">Disabled custom checkbox</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck3" checked="" disabled="">
+        <label class="custom-control-label" for="customCheck3">Disabled custom checkbox (checked)</label>
+      </div>
+      <p class="mt-3 mb-0 font-size-sm">Without label</p>
+      <div class="custom-control custom-control-nolabel custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck4">
+        <label class="custom-control-label" for="customCheck4"></label>
+      </div>
+      <div class="custom-control custom-control-nolabel custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck5" disabled="">
+        <label class="custom-control-label" for="customCheck5"></label>
+      </div>
+      <div class="custom-control custom-control-nolabel custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck6" checked="" disabled="">
+        <label class="custom-control-label" for="customCheck6"></label>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section9">
+      <h5>Radios</h5>
+      <p class="text-muted font-size-sm">
+        For even more customization and cross browser consistency, use our completely custom radio element to replace the browser defaults.
+      </p>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio1" name="radio1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio2" name="radio1" class="custom-control-input">
+        <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio3" name="radio2" class="custom-control-input" disabled="">
+        <label class="custom-control-label" for="customRadio3">Disabled custom radio</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input type="radio" id="customRadio4" name="radio2" class="custom-control-input" disabled="" checked="">
+        <label class="custom-control-label" for="customRadio4">Disabled custom radio (checked)</label>
+      </div>
+      <p class="mt-3 mb-0 font-size-sm">Without label</p>
+      <div class="custom-control custom-control-nolabel custom-radio">
+        <input type="radio" name="radio3" class="custom-control-input" id="customRadio5">
+        <label class="custom-control-label" for="customRadio5"></label>
+      </div>
+      <div class="custom-control custom-control-nolabel custom-radio">
+        <input type="radio" name="radio3" class="custom-control-input" id="customRadio6" checked="">
+        <label class="custom-control-label" for="customRadio6"></label>
+      </div>
+      <div class="custom-control custom-control-nolabel custom-radio">
+        <input type="radio" name="radio4" class="custom-control-input" id="customRadio7" disabled="">
+        <label class="custom-control-label" for="customRadio7"></label>
+      </div>
+      <div class="custom-control custom-control-nolabel custom-radio">
+        <input type="radio" name="radio4" class="custom-control-input" id="customRadio8" checked="" disabled="">
+        <label class="custom-control-label" for="customRadio8"></label>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section10">
+      <h5>Switches</h5>
+      <p class="text-muted font-size-sm">
+        A switch has the markup of a custom checkbox but uses the <code>.custom-switch</code> class to render a toggle switch. Switches also support the disabled attribute.
+      </p>
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+        <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+      </div>
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch2" disabled="">
+        <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+      </div>
+      <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch3" disabled="" checked="">
+        <label class="custom-control-label" for="customSwitch3">Disabled switch element (checked)</label>
+      </div>
+      <p class="mt-3 mb-0 font-size-sm">Without label</p>
+      <div class="custom-control custom-control-nolabel custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch4">
+        <label class="custom-control-label" for="customSwitch4"></label>
+      </div>
+      <div class="custom-control custom-control-nolabel custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch5" disabled="">
+        <label class="custom-control-label" for="customSwitch5"></label>
+      </div>
+      <div class="custom-control custom-control-nolabel custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch6" checked="" disabled="">
+        <label class="custom-control-label" for="customSwitch6"></label>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section11">
+      <h5>Range</h5>
+      <p class="text-muted font-size-sm">
+        Create custom range controls with <code>.custom-range</code>. The track (the background) and thumb (the value) are both styled to appear the same across browsers.
+      </p>
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="customRange1">Custom range</label>
+          <input type="range" class="custom-range" id="customRange1">
+          <label for="customRange2">Disabled custom range</label>
+          <input type="range" class="custom-range" id="customRange2" disabled="">
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-5">
+
+    <section id="section12">
+      <h5>Custom spinner</h5>
+      <p class="text-muted font-size-sm">
+        Create simple custom input spinner.
+      </p>
+      <div class="custom-spinner" style="max-width: 200px;">
+        <button class="btn btn-icon rounded-circle btn-faded-primary down" type="button"><i class="material-icons">remove</i></button>
+        <input type="number" class="form-control" value="1" min="1" max="100">
+        <button class="btn btn-icon rounded-circle btn-faded-primary up" type="button"><i class="material-icons">add</i></button>
+      </div>
+      <div class="clearfix my-3"></div>
+      <div class="custom-spinner custom-spinner-vertical">
+        <button class="btn btn-icon rounded-circle btn-faded-primary up" type="button"><i class="material-icons">keyboard_arrow_up</i></button>
+        <input type="number" class="form-control" value="1" min="1" max="100">
+        <button class="btn btn-icon rounded-circle btn-faded-primary down" type="button"><i class="material-icons">keyboard_arrow_down</i></button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="col-3 d-none d-xl-block">
+    <div class="nav-section">
+      <label class="text-muted">On This Page</label>
+      <nav id="navSection" class="nav flex-column">
+        <a href="#section1" class="nav-link nav-link-sm">Input Box</a>
+        <a href="#section2" class="nav-link nav-link-sm">Input with an Icon</a>
+        <a href="#section3" class="nav-link nav-link-sm">Select Menu</a>
+        <a href="#section4" class="nav-link nav-link-sm">File Browser</a>
+        <a href="#section5" class="nav-link nav-link-sm">Floating Labels</a>
+        <a href="#section6" class="nav-link nav-link-sm">Sizing</a>
+        <a href="#section7" class="nav-link nav-link-sm">Autosize Textarea</a>
+        <a href="#section8" class="nav-link nav-link-sm">Checkboxes</a>
+        <a href="#section9" class="nav-link nav-link-sm">Radios</a>
+        <a href="#section10" class="nav-link nav-link-sm">Switches</a>
+        <a href="#section11" class="nav-link nav-link-sm">Range</a>
+        <a href="#section12" class="nav-link nav-link-sm">Custom spinner</a>
+      </nav>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<!-- Sidebar header -->
+<div class="sidebar-header">
+    <a href="index.html" class="logo">
+      <!--img src="../assets/img/masstile_logo.png" class='py-2' style='width: 220px;' alt="Logo" id="main-logo">-->
+      <h4 class='m-2 px-4'> Admin Panel </h4>
+    </a>
+  </div>
+  <!-- /Sidebar header -->
+
+
+  <!-- Sidebar body -->
+  <div class="sidebar-body ps">
+<ul class='nav nav-sub'>
+    <li class="nav-label">DASHBOARD</li>
+    <li class="nav-item">
+      <a class="nav-link has-icon" href="/admin"><i class="fa fa-shopping-basket"></i>Admin Panel</a>
+    </li>
+    <li class="nav-label">ADMIN MENU</li>
+</ul>
+
+      <mat-nav-list>
+        <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+      </mat-nav-list>
+
+
+
+  </div>
+  <!-- /Sidebar body -->
+

@@ -1,0 +1,20 @@
+
+.material-icons {
+  font-size: 1.5em;
+  margin-right: 1rem;
+}
+
+
+a.mat-list-item {color: rgba(255,255,255,.5);}
+
+a.mat-list-item.active {
+  color: white;
+  box-shadow: 3px 0 0 0 #fff inset;
+}
+
+
+.mat-icon-arrow {
+  position: absolute;
+  right: 5px;
+  bottom: 12px;
+}

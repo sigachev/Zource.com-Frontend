@@ -1,0 +1,56 @@
+<div class="d-flex">
+  <div class="list-with-gap">
+    <button class="btn btn-primary has-icon" type="button" data-toggle="modal" data-target="#addUser"><i class="material-icons mr-2">add_circle_outline</i>Add new user</button>
+
+  </div>
+  <div class='pl-5'><input type="text" class="form-control" placeholder="Search User Fullname"></div>
+  <button class="btn btn-primary ml-auto align-self-end has-icon" type="button" onclick="document.querySelector('#filter').toggleAttribute('hidden')">
+    <i class="material-icons mr-2">filter_list</i>Filter
+  </button>
+</div>
+
+
+
+
+
+
+    <table class='table table-nostretch table-align-middle mb-0'>
+      <tr class='column-filter'>
+        <th></th>
+        <th><input type="text" class="form-control w-75" placeholder="Search User Fullname"></th>
+        <th></th>
+      </tr>
+    </table>
+
+<mat-table class="table table-align-middle mb-2" [dataSource]="dataSource" matSort >
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell class="fa-bold" *matHeaderCellDef mat-sort-header>id</mat-header-cell>
+    <mat-cell *matCellDef="let user">
+      <a [routerLink]="['/admin/user/', user.id]">{{user.id}}</a>
+    </mat-cell>
+  </ng-container>
+
+
+
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+    <mat-cell *matCellDef="let user">
+      <a [routerLink]="['/admin/user/', user.id]">{{user.firstName}}</a>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+    <mat-cell *matCellDef="let user">
+      <a [routerLink]="['/admin/user/', user.id]">{{user.lastName}}</a>
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+<mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 5, 10]"></mat-paginator>

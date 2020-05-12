@@ -1,0 +1,184 @@
+﻿<div class="card card-style1" *ngIf='product'>
+  <div class="card-body">
+    <div class="row">
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>
+
+      <div class="col-md-6">
+        <div class="swiper-gallery">
+          <product-image-gallery *ngIf='this.product.images' [images]="this.product.images"></product-image-gallery>
+        </div>
+      </div>
+
+      <div class="col-md-6 pt-3 pt-md-0">
+        <h4 class="card-title font-weight-normal mb-3">{{product.name}}</h4>
+        <h6 class="mb-3"><span class="rating" data-value="4.5"></span> <a
+          href='/brand/{{product.brand.id}}'>{{product.brand.name}}</a></h6>
+        <h3 class="price mb-3">
+
+          <span>{{product.price | currency: 'USD'}} / {{product.priceFor.toString()}}</span>
+        </h3>
+        <form>
+          <div class="form-group form-inline'fv bd">
+            <label class="font-weight-bold d-block">Size</label>
+            <div class="form-check">
+              <input mdbInputDirective type="radio" class="form-check-input" id="mat2" name="disabledGroupExample2"
+                     mdbInput>
+              <label class="form-check-label disabled" for="mat2">12 x 12</label>
+            </div>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" id="mat3" name="disabledGroupExample2" mdbInput>
+              <label class="form-check-label disabled" for="mat3"> 12 x 24</label>
+            </div>
+          </div>
+
+
+            <div class='row pt-2' *ngIf='product.priceFor !== product.soldBy'>
+              <div class='col-4'>How many sqft you need?</div>
+              <div class='col-2'>
+                <input type='number' mon='0' class='form-control' [(ngModel)]='sqftInput' [ngModelOptions]="{standalone: true}"
+                       (keyup)='onQtyChange()' (change)='onQtyChange()'>
+              </div>
+
+              <div class='col-6 text-info'>Total: {{qtySoldBy*product.uomRatio}} {{product.priceFor.toString() | unitOfMeasure: qtySoldBy}}</div>
+
+            </div>
+
+
+          <div class='row py-2'>
+            <div class='col-4'> <label class="font-weight-bold d-block">Quantity ({{product.soldBy?.toString() | unitOfMeasure: qtySoldBy }})</label></div>
+            <div class='col-2'><input type='number' ng-pattern='' class='form-control' min='0'
+                                      [(ngModel)]="qtySoldBy" [ngModelOptions]="{standalone: true}"></div>
+
+            <div class='col-6 text-info'>Total price: {{qtySoldBy * product.uomRatio * product.price | currency: 'USD'}} </div>
+          </div>
+
+
+          <button class="btn rounded-pill btn-primary atc-demo my-3 px-5" type="button">Add to Cart</button>
+
+        </form>
+        <hr>
+        <div class="d-flex align-items-center">
+          <span class="text-muted">Share</span>
+          <button class="btn btn-icon btn-faded-primary btn-sm rounded-circle ml-1" data-toggle="tooltip"
+                  title="Facebook">
+            <i class="custom-icon" data-icon="facebook" data-size="17x17"></i>
+          </button>
+          <button class="btn btn-icon btn-faded-info btn-sm rounded-circle ml-1" data-toggle="tooltip" title="Twitter">
+            <i class="custom-icon" data-icon="twitter" data-size="17x17"></i>
+          </button>
+          <button class="btn btn-icon btn-faded-danger btn-sm rounded-circle ml-1" data-toggle="tooltip" title="Google">
+            <i class="custom-icon" data-icon="gplus" data-size="17x17"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="nav nav-tabs justify-content-center border-bottom mt-3">
+    <a class="nav-item nav-link has-icon active" href="#description-content" data-toggle="tab"><i
+      class="material-icons mr-1">list</i>Description</a>
+    <a class="nav-item nav-link has-icon" href="#review-content" data-toggle="tab"><i class="material-icons mr-1">star_border</i>Reviews
+      (2)</a>
+  </nav>
+  <div class="tab-content pt-4">
+    <div class="tab-pane fade show active" id="description-content">
+      <p>HanesBrands is a socially responsible manufacturer and marketer of leading everyday basic apparel under some of
+        the world's strongest apparel brands in the Americas, Europe and Asia, as well as in Australia and South
+        Africa.</p>
+      <p>Now this medium weight 7.8-o fleece sweatshirt is even better, because it is made with up to 5 percent
+        polyester created from recycled plastic.</p>
+      <ul>
+        <li>50% Cotton, 50% Polyester</li>
+        <li>Imported</li>
+        <li>shirts closure</li>
+        <li>Machine Wash</li>
+        <li>Soft, durable fleece with double-needle cover-seamed neck and armholes stays strong when you work or play
+          hard
+        </li>
+        <li>Machine wash it again and again without hesitation because it's pill-resistant</li>
+        <li>Ribbed waistband and cuffs</li>
+      </ul>
+    </div>
+    <div class="tab-pane fade " id="review-content">
+      <div class="row gutters-3 justify-content-center">
+        <div class="col-11 col-sm-6 col-md-4 col-lg-3">
+          <h5 class="d-flex align-items-center font-condensed">
+            Overall Rating: 4.5
+            <span class="rating ml-1" data-value="4.5"></span>
+          </h5>
+          <div class="list-group">
+            <a href="javascript:void(0)"
+               class="list-group-item list-group-item-action text-muted d-flex align-items-center justify-content-between"><span
+              class="rating" data-value="5"></span> <span>21</span></a>
+            <a href="javascript:void(0)"
+               class="list-group-item list-group-item-action text-muted d-flex align-items-center justify-content-between"><span
+              class="rating" data-value="4"></span> <span>5</span></a>
+            <a href="javascript:void(0)"
+               class="list-group-item list-group-item-action text-muted d-flex align-items-center justify-content-between"><span
+              class="rating" data-value="3"></span> <span>2</span></a>
+            <a href="javascript:void(0)"
+               class="list-group-item list-group-item-action text-muted d-flex align-items-center justify-content-between"><span
+              class="rating" data-value="2"></span> <span>1</span></a>
+            <a href="javascript:void(0)"
+               class="list-group-item list-group-item-action text-muted d-flex align-items-center justify-content-between"><span
+              class="rating" data-value="0"></span></a>
+          </div>
+          <div class="text-center mt-1">
+            <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#reviewModal">Write a review
+            </button>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-9 mt-5 mt-md-0">
+          <div class="media">
+            <a href="javascript:void(0)"><img src="./assets/img/user/user1.svg" alt="User" width="45" height="45"
+                                              class="rounded-circle"></a>
+            <div class="media-body ml-2 ml-sm-3">
+              <h6>Terrific Shirt, Exactly What I Wanted.</h6>
+              <p class="d-flex flex-wrap align-items-center">
+                <span class="rating mr-2" data-value="5"></span>
+                <a href="javascript:void(0)" class="mr-2">Alan Lewis</a>
+                <span class="text-muted font-size-sm">3 days ago</span>
+              </p>
+              <p>The Hanes sweatshirt was precisely what I wanted except for the color which is better than what I
+                thought I was getting. This order went perfectly, so much so that another two are being shipped to me
+                right now. It is way too early to say anything about durability; but otherwise, there is no way this
+                order could have gone any better than it did. If you are interested in a pretty traditional long-sleeve
+                sweatshirt, you would do well to give this one serious consideration.</p>
+              <hr>
+            </div>
+          </div>
+          <div class="media">
+            <a href="javascript:void(0)"><img src="./assets/img/user/user2.svg" alt="User" width="45" height="45"
+                                              class="rounded-circle"></a>
+            <div class="media-body ml-2 ml-sm-3">
+              <h6>Very comfortable.</h6>
+              <p class="d-flex flex-wrap align-items-center">
+                <span class="rating mr-2" data-value="4"></span>
+                <a href="javascript:void(0)" class="mr-2">Amy</a>
+                <span class="text-muted font-size-sm">5 days ago</span>
+              </p>
+              <p>Fits slightly larger than expected, but gets longer, not just wider. (For reference, I am female,
+                5'8'', 170lbs, and this sweatshirt fits around my 36J chest with room to spare, coming to rest at about
+                crotch level)</p>
+              <hr>
+            </div>
+          </div>
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled"><span class="page-link has-icon"><i
+              class="material-icons">chevron_left</i></span></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+            <li class="page-item active"><span class="page-link">2</span></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+            <li class="page-item"><a class="page-link has-icon" href="javascript:void(0)"><i class="material-icons">chevron_right</i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alert alert-danger"
+     *ngIf="errorMessage">{{errorMessage}}
+</div>

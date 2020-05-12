@@ -1,0 +1,23 @@
+
+/*.imgMaxHeight {
+  max-height: 600px;
+}
+
+.centreImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}*/
+
+.ngx-custom {
+
+}
+
+
+.ngx-gallery-thumbnail.ngx-gallery-active {
+  border: 1px solid lightgrey;
+}
+
+ngx-gallery >>> .ngx-gallery-arrow {
+  color: #868a8f;
+}

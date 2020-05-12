@@ -1,0 +1,87 @@
+<div class="container-fluid my-3">
+  <div class="row gutters-3">
+    <div class="col-md-4 col-lg-3">
+      <div class="card card-style1">
+        <div class="card-body text-center">
+          <img src="assets/img/user/user.svg" width="100" height="100" alt="User" class="rounded-circle mb-3">
+          <h5 class="mb-0">{{currentUser.firstName}}&nbsp;{{currentUser.lastName}}</h5>
+          <small class="text-muted">Joined Dec 31, 2017</small>
+          <hr>
+          <div class="font-condensed d-flex align-items-center justify-content-center" data-toggle="tooltip" title="You currently have 9,386 Points to spend.">
+            <i class="material-icons text-warning mr-2">grade</i> Points: 9386</div>
+        </div>
+        <div class="list-group list-group-flush">
+          <a href="account-profile.html" class="list-group-item list-group-item-action d-flex active">
+            <i class="material-icons mr-3">person</i> Profile
+          </a>
+          <a href="account-orders.html" class="list-group-item list-group-item-action d-flex">
+            <i class="material-icons mr-3">shopping_cart</i> Orders
+          </a>
+          <a href="account-wishlist.html" class="list-group-item list-group-item-action d-flex align-items-center">
+            <i class="material-icons mr-3">favorite_border</i> Wishlist
+
+            <span class="badge badge-primary badge-pill ml-auto">3</span>
+          </a>
+          <a href="account-address.html" class="list-group-item list-group-item-action d-flex">
+            <i class="material-icons mr-3">location_on</i> Address
+          </a>
+          <a href="account-signin.html" class="list-group-item list-group-item-action text-danger d-flex">
+            <i class="material-icons mr-3">exit_to_app</i> Sign Out
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col mt-3 mt-md-0">
+      <div class="card card-style1">
+        <div class="card-body">
+          <h4>My Profile</h4>
+          <hr>
+          <form class='form-style-1' (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-row">
+              <div class="form-group col-sm-6">
+                <label for="profileFirstName">First Name</label>
+                <input type="text" class="form-control" id="profileFirstName"  name='profileFirstName' [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required>
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="profileLastName">Last Name</label>
+                <input type="text" class="form-control" id="profileLastName" name="profileLastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required >
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="profileEmail">Email address</label>
+                <input type="email" class="form-control" id="profileEmail" name="profileEmail"  [(ngModel)]="model.email" #email="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required >
+              </div>
+
+              <div class="form-group col-sm-6">
+                <label for="profileTel">Phone Number</label>
+                <input type="text" class="form-control" id="profileTel" name="profileTel"  [(ngModel)]="model.tel" #tel="ngModel" [ngClass]="{ 'is-invalid': f.submitted && tel.invalid }">
+              </div>
+
+              <div class="form-group col-sm-12 border-top my-4 "></div>
+
+              <div class="form-group col-sm-6">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username"  [(ngModel)]="model.username" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.invalid }">
+              </div>
+
+              <div class="form-group col-sm-6"></div>
+
+              <div class="form-group col-sm-6">
+                <label for="profileNewPassword">New Password</label>
+                <input type="password" class="form-control" id="profileNewPassword" name="password"  [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }">
+              </div>
+              <div class="form-group col-sm-6">
+                <label for="profileConfirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="profileConfirmPassword">
+              </div>
+              <div class="form-group col-12">
+                <button class="btn btn-primary">UPDATE PROFILE</button>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<button class='btn btn-primary' (click)='notify()'>Push Notification</button>

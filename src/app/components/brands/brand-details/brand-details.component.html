@@ -1,0 +1,85 @@
+
+
+<div class="row gutters-3">
+
+  <div class="col-md-8 col-lg-9">
+
+    <div class="alert alert-danger" *ngIf='errorMessage'>
+      {{errorMessage}}
+    </div>
+
+
+
+
+
+
+    <div class="card card-style1">
+      <div class="card-body" *ngIf='brand'>
+        <!-- Brand Info -->
+        <h2>{{brand.name}}</h2>
+
+        <img class="pull-left" src="./assets/img/brands/{{brand.id}}/top_banner.jpg" alt="{{brand.name}}" class="img-fluid py-1">
+
+<hr>
+        <img style='max-width: 30%' class="pull-left" src="./assets/img/brands/{{brand.id}}/main.jpg" alt="{{brand.name}}" class="img-thumbnail  my-3">
+        {{brand.description}}
+
+        <!-- /Brand Info -->
+
+
+
+        <hr>
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+  <div class="col-md-4 col-lg-3">
+    <div class="d-grid grid-template-col-1 grid-template-col-sm-2 grid-template-col-md-1 grid-gap-3 mt-3 mt-md-0">
+      <div class="card card-style1">
+        <h5 class="card-header">POPULAR<span class="text-primary ml-2">TAGS</span></h5>
+        <div class="card-body">
+          <div class="btn-group-scatter">
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Design</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Mosaic</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Tile</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Custom Cabinets</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Luxury tile</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1 active">Modern</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Contemporary design</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Bathroom tile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+

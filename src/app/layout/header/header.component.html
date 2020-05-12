@@ -1,0 +1,87 @@
+
+<header>
+  <div class="container-fluid">
+    <nav class="nav nav-circle d-flex d-lg-none">
+      <a href="#menuModal" data-toggle="modal" class="nav-link nav-icon"><i class="material-icons">menu</i></a>
+    </nav>
+    <nav class="nav ml-3 ml-lg-0">
+      <a href="/" class="nav-link has-icon p-0 bg-white">
+        <img src="assets/img/masstile_logo.png" alt="Logo" height="40">
+      </a>
+    </nav>
+
+    <nav class="nav nav-main nav-gap-x-1 nav-pills ml-3 d-none d-lg-flex">
+
+      <a class="nav-link " [routerLink]="['/login']">
+        Login
+      </a>
+
+      <a class="nav-link " [routerLink]="['/register']">
+        Registration
+      </a>
+
+      <a class="nav-link " [routerLink]="['/category']">
+        Category
+      </a>
+
+      <a class="nav-link " [routerLink]="['/product/1']">
+        Product
+      </a>
+
+      <a class="nav-link " [routerLink]="['/profile']">
+        Profile
+      </a>
+
+      <div class="nav-item dropdown dropdown-hover">
+        <a class="nav-link dropdown-toggle no-caret forwardable" href="blog-grid.html" id="blogDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Blog
+        </a>
+        <div class="dropdown-menu" aria-labelledby="blogDropdown">
+          <a class="dropdown-item" href="blog-grid.html">Post Grid</a>
+          <a class="dropdown-item" href="blog-list.html">Post List</a>
+          <a class="dropdown-item" href="blog-single.html">Single Post</a>
+        </div>
+      </div>
+      <div class="nav-item dropdown dropdown-hover">
+        <a class="nav-link dropdown-toggle no-caret" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Pages
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="about.html">About Us</a>
+          <a class="dropdown-item" href="contact.html">Contact Us</a>
+          <a class="dropdown-item" href="compare.html">Compare</a>
+          <a class="dropdown-item" href="faq.html">Help / FAQ</a>
+          <a class="dropdown-item" href="404.html">404 Not Found</a>
+        </div>
+      </div>
+
+      <a class="nav-link " [routerLink]="['/brands']">
+        Brands
+      </a>
+
+
+
+    </nav>
+    <nav class="nav nav-circle nav-gap-x-1 ml-auto">
+      <a class="nav-link nav-icon" data-toggle="modal" href="#searchModal">
+        <i class="material-icons">search</i>
+      </a>
+      <a class="nav-link nav-icon has-badge d-none d-sm-flex" href="account-wishlist.html">
+        <i class="material-icons">favorite_border</i>
+        <span class="badge badge-pill badge-danger">3</span>
+      </a>
+      <!--<a class="nav-link nav-icon has-badge" data-toggle="modal" href="#cartModal">-->
+        <a class="nav-link nav-icon has-badge" data-toggle="modal" href="#cartModal">
+        <i class="material-icons">shopping_cart</i>
+        <span class="badge badge-pill badge-danger">4</span>
+      </a>
+
+    </nav>
+
+  </div>
+</header>
+
+
+
+
+

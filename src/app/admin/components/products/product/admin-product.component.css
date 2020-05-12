@@ -1,0 +1,2 @@
+
+.checkbox-warning-filled [type="checkbox"][class*='filled-in']:checked+label:after { border-color: #FF8800; background-color: #FF8800; }

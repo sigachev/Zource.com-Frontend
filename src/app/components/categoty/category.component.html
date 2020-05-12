@@ -1,0 +1,33 @@
+<div class="row gutters-3">
+  <div class="col-md-4 col-lg-3">
+    <app-category-sidebar #sidebarFilter
+                          (nameFilterChange) = onNameFilterValueChange($event);
+                          (priceRangeFilterChange) = onPriceRangeChange($event);
+    >
+    </app-category-sidebar>
+  </div>
+
+  <div class="col-md-8 col-lg-9">
+
+<app-category-topbar></app-category-topbar>
+
+
+    <div *ngIf="products && products.length" class="d-grid grid-template-col-2 grid-template-col-lg-3 grid-template-col-xl-4 grid-gap-1 grid-gap-sm-3 mt-3">
+      <div class="card card-product card-style1" *ngFor="let product of filteredProducts" >
+        <div class="card-body">
+          <button class="btn btn-icon btn-text-danger rounded-circle btn-wishlist atw-demo" data-toggle="button" title="Add to wishlist"></button>
+          <button class="btn btn-icon btn-text-secondary rounded-circle btn-quickview quickview-demo" type="button" title="Quick view"><i class="material-icons">zoom_in</i></button>
+          <a [routerLink]="['/product',product.id]"><img class="card-img-top" src="./assets/img/products/1_small.jpg" alt="Card image cap"></a>
+          <a href="shop-single.html" class="card-title card-link">{{ product.name }}</a>
+          <span class="badge badge-success">{{ product.create_date }}</span>
+          <div class="price"><span class="h5">{{ product.price | currency:"USD":"symbol":"1.2-2" }}</span></div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-sm rounded-pill btn-faded-primary btn-block atc-demo">Add to Cart</button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

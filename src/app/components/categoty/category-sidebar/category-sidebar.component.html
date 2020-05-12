@@ -1,0 +1,83 @@
+
+<mdb-accordion [multiple]="true" [autoExpand]="true">
+  <mdb-accordion-item [collapsed]="false">
+    <mdb-accordion-item-head>NAME</mdb-accordion-item-head>
+    <mdb-accordion-item-body (animationStateChange)="onAnimationStateChange($event)">
+      <input type="text" class='form-control input-lg' [(ngModel)]="nameFilter" placeholder="Search name..."/>
+    </mdb-accordion-item-body>
+  </mdb-accordion-item>
+
+  <mdb-accordion-item [collapsed]="false">
+    <mdb-accordion-item-head>BRAND</mdb-accordion-item-head>
+    <mdb-accordion-item-body (animationStateChange)="onAnimationStateChange($event)">
+
+      <span class="input-icon">
+        <i class="material-icons">search</i>
+         <input type="text" class='form-control input-lg' [(ngModel)]="searchBrandText" placeholder="Search brand..."/>
+      </span>
+
+      <div class='form-grou my-2'>
+        <mdb-checkbox  *ngFor="let b of brands | brandFilter : searchBrandText" name="brands" value="{{b.id}}">
+          {{b.name}}
+        </mdb-checkbox>
+      </div>
+
+<!--      <ul class="game-list">
+        <li *ngFor="let b of brands | brandFilter : searchBrandText" class="game-item">
+          <input type="checkbox" name="brands" value="{{b.id}}"
+                 [(ngModel)]="b.enabled"/>
+          <span class="game-text">{{b.name}}</span>
+        </li>
+      </ul>
+
+      &lt;!&ndash; Material checkboxes &ndash;&gt;
+      <div class='form-grou my-2'>
+        <mdb-checkbox>Anatolia tile</mdb-checkbox>
+        <mdb-checkbox>Happy Floors</mdb-checkbox>
+        <mdb-checkbox>Glazzio</mdb-checkbox>
+        <mdb-checkbox>Soho Studio</mdb-checkbox>
+      </div>-->
+    </mdb-accordion-item-body>
+  </mdb-accordion-item>
+
+
+
+  <mdb-accordion-item  [collapsed]="false">
+    <mdb-accordion-item-head>PRICE</mdb-accordion-item-head>
+    <mdb-accordion-item-body (animationStateChange)="onAnimationStateChange($event)">
+
+      <div class="d-flex justify-content-between mb-3">
+
+        <input type="text" [(ngModel)]='priceRange.first'
+               class="form-control form-control-sm rounded-pill bg-light text-center font-condensed mr-2 minw-0" id="price-slider-min" >
+        <input type="text" [(ngModel)]='priceRange.second'
+               class="form-control form-control-sm rounded-pill bg-light text-center font-condensed ml-2 minw-0" id="price-slider-max" >
+      </div>
+
+
+      <mdb-multi-range-input #priceInput id="price-range" min="0" max="100" [(ngModel)]='priceRange' (rangeValueChange)="onRangeValueChange($event)"></mdb-multi-range-input>
+<!--      <div class='card-body d-flex align-items-center'>
+        Min: <input class='form-control form-control-sm rounded-pill bg-light text-center font-condensed mx-3 minw-0' type="text" [(ngModel)]='priceRange.first'/>
+        Max: <input class='form-control form-control-sm rounded-pill bg-light text-center font-condensed ml-3 minw-0' type="text" [(ngModel)]="priceRange.second"/>
+      </div>-->
+
+      <div class='mx-3'></div>
+    </mdb-accordion-item-body>
+  </mdb-accordion-item>
+
+  <mdb-accordion-item>
+    <mdb-accordion-item-head>Test Parameters</mdb-accordion-item-head>
+    <mdb-accordion-item-body>
+
+
+    </mdb-accordion-item-body>
+  </mdb-accordion-item>
+
+</mdb-accordion>
+
+
+<div class="card card-style1 border-top">
+  <div class="card-header no-caret px-5 py-2 text-center bg-white">
+    <button class="btn btn-primary rounded-pill btn-sm btn-block" data-dismiss="modal">APPLY</button>
+  </div>
+</div>

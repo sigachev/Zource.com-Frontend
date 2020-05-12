@@ -1,0 +1,37 @@
+<mat-sidenav-container class='sidenav-containerj'>
+  <mat-sidenav #appDrawer mode="side" opened class='sidebar'>
+
+    <admin-sidenav></admin-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+
+      <admin-header (toggleSidebar)='appDrawer.toggle()'></admin-header>
+
+
+    <div class='main-body'>
+
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb breadcrumb-style2">
+          <li class="breadcrumb-item">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="javascript:void(0)">UI Elements</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Tooltips</li>
+        </ol>
+      </nav>
+      <!-- /Breadcrumb -->
+
+      <router-outlet></router-outlet>
+
+    </div>
+    <!--    <nz-affix [nzOffsetBottom]="0" >
+          <admin-footer></admin-footer>
+        </nz-affix>-->
+  </mat-sidenav-content>
+
+
+</mat-sidenav-container>

@@ -1,0 +1,70 @@
+
+<div class="row gutters-3">
+
+  <div class="col-md-8 col-lg-9">
+
+    <div class="alert alert-danger" *ngIf='errorMessage'>
+      {{errorMessage}}
+    </div>
+
+    <div *ngIf="brands && brands.length" class="d-grid grid-template-col-2 grid-template-col-lg-3 grid-template-col-xl-4 grid-gap-1 grid-gap-sm-3 ">
+      <div class="card card-product card-style1"   *ngFor="let brand of filteredBrands" >
+
+        <mdb-card>
+          <!--Card image-->
+          <div class='p-md-3'>
+          <a [routerLink]="['/brand/',brand.id]">
+            <mdb-card-img   src="./assets/img/products/1_small.jpg"  alt="{{brand.name}}"></mdb-card-img>
+          </a>
+          </div>
+          <!--Card content-->
+          <mdb-card-body>
+
+            <!--Title-->
+            <mdb-card-title>
+              <a [routerLink]="['/brand/',brand.id]"><h4>{{brand.name}}</h4></a>
+            </mdb-card-title>
+
+            <!--Text-->
+            <mdb-card-text> {{brand.description | truncatetext: 80}}
+            </mdb-card-text>
+
+            <!--   <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>-->
+          </mdb-card-body>
+        </mdb-card>
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+  <div class="col-md-4 col-lg-3">
+    <div class="d-grid grid-template-col-1 grid-template-col-sm-2 grid-template-col-md-1 grid-gap-3 mt-3 mt-md-0">
+      <div class="card card-style1">
+        <h5 class="card-header">POPULAR<span class="text-primary ml-2">TAGS</span></h5>
+        <div class="card-body">
+          <div class="btn-group-scatter">
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Design</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Mosaic</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Tile</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Custom Cabinets</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Luxury tile</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1 active">Modern</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Contemporary design</a>
+            <a href="#" class="btn btn-faded-light rounded-pill mb-1">Bathroom tile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

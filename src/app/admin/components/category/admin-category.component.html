@@ -1,0 +1,88 @@
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+
+
+<div class='row'>
+  <div class='col-2'>
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+         aria-controls="v-pills-home" aria-selected="true">Home</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+         aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+         aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+         aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+    </div>
+  </div>
+  <div class='col-10'>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="v-pills-home">
+
+
+        <h5>Main Info</h5>
+        <div class="card card-style-1">
+          <div class="card-body">
+            <form [formGroup]="categoryForm" (ngSubmit)="saveCategory(categoryForm.value)">
+
+
+              <div class="form-group row no-gutters">
+                <label class="col-3 col-sm-2 col-form-label">Product Name</label>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Product name" formControlName="name" required>
+                  <div class="alert-danger"
+                       *ngIf="!categoryForm.controls['name'].valid && (categoryForm.controls['name'].touched)">
+                    <div [hidden]="!categoryForm.controls['name'].errors.required">
+                      Name is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group row no-gutters">
+                <label class="col-3 col-sm-2 col-form-label">Description</label>
+                <div class="col">
+                  <textarea type="text" rows='5' class="form-control" formControlName="description" required
+                            placeholder="Enter description"></textarea>
+                  <div class="alert-danger"
+                       *ngIf="!categoryForm.controls['description'].valid && (categoryForm.controls['description'].touched)">
+                    <div [hidden]="!categoryForm.controls['description'].errors.required">
+                      Description is required.
+                    </div>
+                    <div [hidden]="!categoryForm.controls['description'].errors.minlength">
+                      Description must be have 10 character length.
+                    </div>
+                    <div [hidden]="!categoryForm.controls['description'].errors.maxlength">
+                      Description must be have 1000 character length.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+              <div class="row no-gutters">
+                <div class="col offset-3 offset-sm-2">
+                  <button class="btn btn-secondary mr-2" type="reset">Reset</button>
+                  <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><admin-category-images></admin-category-images></div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+    </div>
+  </div>
+</div>
+
+
