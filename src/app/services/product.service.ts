@@ -40,10 +40,10 @@ export class ProductService {
   }
 
   getProducts(): Observable<Product[]> {
-    this.toast.info('Begin ... ');
+   /* this.toast.info('Begin ... ');*/
     if (this.products) {
       return of(this.products);
-      this.toast.info('Return ');
+      this.toast.info('Products received ');
     }
     // @ts-ignore
     return this.http.get<Product[]>(this.productsUrl + '/all')
@@ -85,36 +85,6 @@ export class ProductService {
       catchError(this.errorService.handleError),
     );
   }
-
-
-  /*getProduct(id: number): Observable<Product> {
-    if (id === 0) {
-      return of(this.initializeProduct());
-    }
-/!*    if (this.products) {
-      const foundItem = this.products.find(item => item.id === id);
-      if (foundItem) {
-        return of(foundItem);
-      }
-    }*!/
-    const url = `${this.productUrl}/${id}`;
-
-    return this.http.get<Product>(url)
-      .pipe(
-        map(product => {
-            if (product) {
-              this.http.get<Brand>(this.brandUrl + '/' + product.brand).subscribe(brand => product.brand = brand);
-            /!*  this.getProductImages(product.id);*!/
-            }
-            this.product = product;
-            return product;
-          }
-        ),
-        tap(data => console.log('Product Data1: ' + JSON.stringify(this.product))),
-        catchError(this.errorService.handleError),
-        catchError(e => throwError(e) ),
-      );
-  }*/
 
 
   getProduct(id: number): Observable<Product> {

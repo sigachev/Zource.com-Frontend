@@ -24,6 +24,16 @@ export class AdminSidenavComponent {
           displayName: 'All Products',
           iconName: '',
           route: 'admin/products',
+        },
+        {
+          displayName: 'Product Presets',
+          iconName: '',
+          route: 'admin/product/preset/list'
+        },
+        {
+          displayName: 'Product Preset 1',
+          iconName: '',
+          route: 'admin/product/preset/1'
         }]
     },
 

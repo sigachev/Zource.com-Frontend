@@ -13843,6 +13843,7 @@ select.form-control[multiple]:not(.select2):not(.chosen-select) > option {
 
 .main-body {
   padding: 15px;
+  height: calc(100vh - 100px);
 }
 
 .nav-notif .dropdown-menu {

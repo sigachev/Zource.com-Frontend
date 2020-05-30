@@ -38,6 +38,10 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {InternalServerErrorComponent} from '../components/errors/internal-server-error/internal-server-error.component';
+import {AdminProductPresetComponent} from './components/products/product-preset/admin-product-preset.component';
+import {AdminProfileComponent} from './components/profile/admin-profile.component';
+import {AdminProductPresetListComponent} from './components/products/product-preset-list/admin-product-preset-list.component';
+import {DataTablesModule} from 'angular-datatables';
 
 const routes: Routes = [
 
@@ -51,6 +55,21 @@ const routes: Routes = [
     }
   },
   {
+    path: 'product/preset/list',
+    component: AdminProductPresetListComponent,
+    data: {
+      breadcrumb: 'Product presets'
+    }
+  },
+  {
+    path: 'product/preset/:id',
+    resolve: {resolvedBrandsList: AdminProductResolverService},
+    component: AdminProductPresetComponent,
+    data: {
+      breadcrumb: 'Settings for new product'
+    }
+  },
+  {
     path: 'product/:id',
     resolve: {resolvedBrandsList: AdminProductResolverService},
     component: AdminProductComponent,
@@ -58,6 +77,14 @@ const routes: Routes = [
       breadcrumb: 'Product Details'
     }
   },
+  {
+    path: 'profile',
+    component: AdminProfileComponent,
+    data: {
+      breadcrumb: 'Profile'
+    }
+  },
+
   {
     path: '',
     data: {
@@ -75,7 +102,7 @@ const routes: Routes = [
 
   {path: '401', component: UnathorizedComponent, data: {breadcrumb: '401 Not Authorized'}},
   {path: '500', component: InternalServerErrorComponent, data: {breadcrumb: '500 Internal Server Error'}},
-  {path: '**', component: PageNotFoundComponent, data: {breadcrumb: '404 Not Found' }},
+  {path: '**', component: PageNotFoundComponent, data: {breadcrumb: '404 Not Found'}},
 ];
 
 @NgModule({
@@ -90,37 +117,41 @@ const routes: Routes = [
     AdminCategoryComponent,
     AdminCategoryImagesComponent,
     MenuListItemComponent,
+    AdminProductPresetComponent,
+    AdminProfileComponent,
+    AdminProductPresetListComponent,
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        RouterModule.forChild(routes),
-        SidenavModule,
-        IconsModule,
-        AccordionModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatListModule,
-        MatExpansionModule,
-        MatProgressSpinnerModule,
-        MatProgressSpinnerModule,
-        MatPaginatorModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatTableModule,
-        MatSortModule,
-        CategoryModule,
-        CheckboxModule,
-        SelectModule,
-        FormsModule,
-        TabsModule,
-        ReactiveFormsModule,
-        MatCheckboxModule,
-        AdminCustomersModule,
-        InputsModule,
-        MdbSortableModule
-    ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(routes),
+    SidenavModule,
+    IconsModule,
+    AccordionModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    CategoryModule,
+    CheckboxModule,
+    SelectModule,
+    FormsModule,
+    TabsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    AdminCustomersModule,
+    InputsModule,
+    MdbSortableModule,
+    DataTablesModule
+  ],
   exports: [
     AdminHeaderComponent,
     AdminFooterComponent,

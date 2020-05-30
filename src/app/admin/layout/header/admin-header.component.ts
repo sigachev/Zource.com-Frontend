@@ -14,6 +14,7 @@ import {AuthenticationService} from '../../../services/authentication.service';
 export class AdminHeaderComponent implements OnInit {
   currentUser: User;
   @Output() toggleSidebar = new EventEmitter();
+  private currentFragment: string;
 
   constructor(private authService: AuthenticationService,
               private router: Router,
@@ -26,6 +27,7 @@ export class AdminHeaderComponent implements OnInit {
 
 
   ngOnInit() {
+
   }
 
   /*  onToggleSidebar() {

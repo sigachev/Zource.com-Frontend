@@ -6,7 +6,6 @@ export class ProductImage {
   fileName = '';
   type = '';
   imageOrder: number;
-  isMainImage: boolean;
 
   constructor() {}
 

@@ -184,7 +184,7 @@
 
 
 
-      <div class="dropdown-menu dropdown-menu shadow border-0 p-0">
+      <div style='z-index: 2000;' class="dropdown-menu dropdown-menu shadow border-0 p-0">
         <div class="card border-0">
           <div class="card-header flex-column px-5">
             <img src="../assets/img/user.jpg" alt="Admin" class="rounded-circle mb-2" width="75" height="75">
@@ -192,11 +192,12 @@
             <small class="text-muted">Administrator</small>
           </div>
           <div class="list-group list-group-flush list-group-sm list-group-borderless py-2">
-            <a href="#" class="list-group-item list-group-item-action has-icon"><i
-              class="material-icons mr-2">person</i>My Profile</a>
-            <a [routerLink]="['/admin/settings']" class="list-group-item list-group-item-action has-icon"><i class="material-icons mr-2">settings</i>Settings</a>
-            <a class="list-group-item list-group-item-action has-icon text-danger" (click)="logOut()"><i
-              class="material-icons mr-2">exit_to_app</i>Logout</a>
+            <a [routerLink]="['/admin/profile']" class="list-group-item list-group-item-action has-icon">
+              <i class="material-icons mr-2">person</i>My Profile</a>
+            <a [routerLink]="['/admin/profile']" [fragment]="'account'" class="list-group-item list-group-item-action has-icon">
+              <i class="material-icons mr-2">settings</i>Settings</a>
+            <a class="list-group-item list-group-item-action has-icon text-danger" (click)="logOut()">
+              <i class="material-icons mr-2">exit_to_app</i>Logout</a>
           </div>
         </div>
       </div>

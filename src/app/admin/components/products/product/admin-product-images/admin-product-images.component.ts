@@ -9,8 +9,8 @@ import {ProductImage} from '../../../../../models/product-image';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProductService} from '../../../../../services/product.service';
 import {ProductImageDTO} from '../../../../../models/DTO/productImageDTO';
-import {ActivatedRoute} from '@angular/router';
-import {MDBModalService} from 'ng-uikit-pro-standard';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MDBModalService, ToastService} from 'ng-uikit-pro-standard';
 
 
 @Component({
@@ -28,33 +28,11 @@ export class AdminProductImagesComponent implements OnInit {
   myFiles: string [] = [];
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private http: HttpClient,
               private productService: ProductService,
-              private modalService: MDBModalService) {
-
-  }
-
-  onFileChange(event) {
-    if (event.target.files && event.target.files[0]) {
-      const filesAmount = event.target.files.length;
-      if ((filesAmount + this.productImageDTOArray.length) > 12) {
-        alert(`Maximum number of images per product is 12. \n\n you can add up to ` +
-          (12 - this.productImageDTOArray.length) + ` more images.`);
-        return false;
-      } else {
-        for (let i = 0; i < filesAmount; i++) {
-          const reader = new FileReader();
-          this.myFiles.push(event.target.files[i]);  /*store new file names in myFiles array*/
-
-          reader.onload = (ev: any) => {
-            this.productImageDTO = new ProductImageDTO(0, ev.target.result);
-            this.productImageDTOArray.push(this.productImageDTO);
-          };
-
-          reader.readAsDataURL(event.target.files[i]);
-        }
-      }
-    }
+              private modalService: MDBModalService,
+              private toast: ToastService) {
 
   }
 
@@ -75,15 +53,37 @@ export class AdminProductImagesComponent implements OnInit {
         this.product.images = p.images.sort((a, b) => a.imageOrder - b.imageOrder);
 
         p.images.forEach(img => {
-          this.productImageDTO = new ProductImageDTO(img.id, this.productImageRoot + img.fileName);
+          this.productImageDTO = new ProductImageDTO(img.id, img.fileName, img.imageOrder, null);
           console.log('Img id: ' + img.id);
           this.productImageDTOArray.push(this.productImageDTO);
-
         });
+        this.reorderImages();
       },
       (err: any) => console.log('Image fetch error: ' + err)
     );
+  }
 
+
+  onFileChange(event) {
+    if (event.target.files && event.target.files[0]) {
+      const filesAmount = event.target.files.length;
+      if ((filesAmount + this.productImageDTOArray.length) > 12) {
+        alert(`Maximum number of images per product is 12. \n\n you can add up to ` +
+          (12 - this.productImageDTOArray.length) + ` more images.`);
+        return false;
+      } else {
+        for (let i = 0; i < filesAmount; i++) {
+          const reader = new FileReader();
+          this.myFiles.push(event.target.files[i]);  /*store new files in myFiles array*/
+
+          reader.onload = (ev: any) => {
+            this.productImageDTO = new ProductImageDTO(0, ev.target.result, 999, event.target.files[i]);
+            this.productImageDTOArray.push(this.productImageDTO);
+          };
+          reader.readAsDataURL(event.target.files[i]);
+        }
+      }
+    }
 
   }
 
@@ -91,14 +91,7 @@ export class AdminProductImagesComponent implements OnInit {
   submit() {
 
     const formData = new FormData();
-    for (let i = 0; i < this.myFiles.length; i++) {
-      formData.append('files', this.myFiles[i]);
-    }
-
-    /*    this.updateForm.patchValue({
-          productImageUpdateDTOList: this.productImageDTOArray
-        });*/
-
+    this.myFiles.forEach(f => formData.append('files', f));
     formData.append('data', new Blob([JSON.stringify(this.productImageDTOArray)], {
       type: 'application/json'
     }));
@@ -107,7 +100,8 @@ export class AdminProductImagesComponent implements OnInit {
     this.http.post(environment.apiUrl + '/product/' + this.product.id + '/updateImages', formData)
       .subscribe(res => {
         console.log(res);
-        alert('Updated Successfully.');
+        this.toast.success('Updated Successfully.');
+        this.router.navigate([this.router.url]);
       });
   }
 
@@ -121,9 +115,7 @@ export class AdminProductImagesComponent implements OnInit {
     for (let i = 0; i < this.productImageDTOArray.length; i++) {
       this.productImageDTOArray[i].order = i;
     }
-    console.log('productImageDTOArray : ' + JSON.stringify(this.productImageDTOArray));
   }
-
 
   deleteImage(img: ProductImageDTO) {
     const index: number = this.productImageDTOArray.indexOf(img);

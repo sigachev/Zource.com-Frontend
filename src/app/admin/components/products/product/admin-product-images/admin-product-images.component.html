@@ -2,16 +2,15 @@
 <div class='row'>
 
   <div mdbSortableList class="col-md-8 d-flex flex-row flex-wrap mt-9" (drop)="onDrop($event)">
-    <div *ngFor="let img of this.productImageDTOArray" mdbSortable class="gallery-thumbnail product-pic">
-        <img src="{{img.url}}" class="img-thumbnail" width="200">
+    <div  [disabled]="true"  *ngFor="let img of productImageDTOArray" mdbSortable class="gallery-thumbnail product-pic">
+        <img src="{{img.id !== 0 ? productImageRoot : ''}}{{img.url}}" class="img-thumbnail" width="200">
         <span class="edit" (click)='deleteImage(img)'><i class="text-danger fa fa-times fa-lg"></i></span>
 
     </div>
 
 
 
-
-    <div class='upload-new ' *ngIf='productImageDTOArray.length < 12' (click)='uploader.click()'>
+    <div class='upload-new' *ngIf='productImageDTOArray.length < 12' (click)='uploader.click()'>
       <input
         hidden
         #uploader
@@ -34,7 +33,3 @@
   <div class='row m-3'>
     <button (click)='submit()' type='submit' class='btn btn-primary'>Upload</button>
   </div>
-
-
-
-
