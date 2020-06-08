@@ -37,12 +37,16 @@
            /*   "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",*/
               "src/assets/css/style.css",
               "src/assets/admin/css/myStyles.css",
-              "node_modules/datatables.net-select-dt/css/select.dataTables.css"
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
               "src/assets/js/script.js",
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js"
+
             ]
           },
           "configurations": {

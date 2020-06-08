@@ -104,3 +104,31 @@
 <!--<button class='btn btn-primary' (click)='action()'>Assign Data Source</button>
 <button class='btn btn-primary' (click)='brandFilterChanged($event.target.value)'>Print event</button>-->
 
+
+
+<div class='card'>
+  <div class='card-body'>
+
+<h3 class="first">Basic</h3>
+<p-table [value]="products" sortMode="multiple">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Vin</th>
+      <th>Year</th>
+      <th>Brand</th>
+      <th>Color</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-product>
+    <tr>
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.brand.name}}</td>
+      <td>{{product.sku}}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+  </div>
+</div>

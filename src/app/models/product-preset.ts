@@ -9,7 +9,7 @@ export class ProductPreset {
   sku: string;
   description: string;
   price: number;
-  brandId: number;
+  brand: Brand;
   active: boolean;
 
 }

@@ -17,7 +17,7 @@ import {MatPaginator} from '@angular/material/paginator';
 export class AdminProductsComponent implements OnInit, AfterViewInit {
 
   category: Category = new Category();
-  private products: Product[];
+  products: Product[];
   dataSource: MatTableDataSource<Product>;
   displayedColumns = ['id', 'sku', 'name', 'price', 'description', 'brand', 'enabled'];
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;

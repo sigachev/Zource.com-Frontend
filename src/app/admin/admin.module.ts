@@ -42,6 +42,9 @@ import {AdminProductPresetComponent} from './components/products/product-preset/
 import {AdminProfileComponent} from './components/profile/admin-profile.component';
 import {AdminProductPresetListComponent} from './components/products/product-preset-list/admin-product-preset-list.component';
 import {DataTablesModule} from 'angular-datatables';
+import { PresetChildDirective } from './components/products/product-preset-list/preset-child.directive';
+import {TableModule} from 'primeng';
+
 
 const routes: Routes = [
 
@@ -120,6 +123,7 @@ const routes: Routes = [
     AdminProductPresetComponent,
     AdminProfileComponent,
     AdminProductPresetListComponent,
+    PresetChildDirective,
   ],
   imports: [
     CommonModule,
@@ -150,7 +154,8 @@ const routes: Routes = [
     AdminCustomersModule,
     InputsModule,
     MdbSortableModule,
-    DataTablesModule
+    DataTablesModule,
+    TableModule
   ],
   exports: [
     AdminHeaderComponent,

@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Router, Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Router, Routes, RouterModule} from '@angular/router';
 import {AuthGuard} from './guards/auth.guard';
 import {Role} from './models/role';
 import {PageNotFoundComponent} from './components/errors/page-not-found.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
     path: 'admin',
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN],  breadcrumb: 'Admin', title: 'Home'},
+    data: {roles: [Role.ADMIN], breadcrumb: 'Admin', title: 'Home'},
     children: [
       {
         path: '',
@@ -34,7 +34,6 @@ const routes: Routes = [
   },
 
 
-
   /*public error pages.*/
   {path: '**', component: PageNotFoundComponent, data: {breadcrumb: '404 Not Found'}},
 
@@ -43,16 +42,21 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(
     routes,
-    { enableTracing: false }
+    {
+      enableTracing: false,
+      /*scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      onSameUrlNavigation: 'reload',
+      scrollOffset: [0, 64]*/}
   )],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
   constructor(private router: Router) {
     /*For unkhown pages*/
-   /* this.router.errorHandler = (error: any) => {
-      this.router.navigate(['/404']);
-    };*/
+    /* this.router.errorHandler = (error: any) => {
+       this.router.navigate(['/404']);
+     };*/
   }
 }
 
