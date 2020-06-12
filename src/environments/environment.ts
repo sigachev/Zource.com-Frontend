@@ -4,7 +4,8 @@
 
 export const environment = {
   myDomain: 'localhost',
-  apiUrl: 'http://localhost:8080/api',
+  myPort: 5000,
+  apiUrl: 'http://localhost:5000/api',
   s3Bucket: 'https://zource-bucket.s3.us-east-1.amazonaws.com/',
   production: false
 };
