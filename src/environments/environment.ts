@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  /*BUILD_ENV: 'prod',*/
+
   production: false,
 
   S3_BUCKET: 'zource.com',

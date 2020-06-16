@@ -1,5 +1,7 @@
 export const environment = {
   production: true,
+  BUILD_ENV: 'prod',
+
   S3_BUCKET: 'zource.com',
   APP_NAME: 'zource.com',
 
