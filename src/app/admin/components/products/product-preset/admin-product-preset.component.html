@@ -1,0 +1,148 @@
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+
+
+<div class='row' style='z-index: 1000;'>
+  <div class='col-2'>
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+         aria-controls="v-pills-home" aria-selected="true">Home</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-images" role="tab"
+         aria-controls="v-pills-profile" aria-selected="false">Images</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+         aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+    </div>
+  </div>
+  <div class='col-10'>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="v-pills-home">
+
+
+        <h5>Main Info</h5>
+        <div class="card card-style-1">
+          <div class="card-body">
+            <form [formGroup]="pForm" (ngSubmit)="save(pForm.value)">
+
+
+              <div class="form-group row no-gutters">
+                <label class="col-3 col-sm-2 col-form-label">Product Name</label>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Product name" formControlName="name" required>
+                  <div class="alert-danger"
+                       *ngIf="!pForm.controls['name'].valid && (pForm.controls['name'].touched)">
+                    <div [hidden]="!pForm.controls['name'].errors.required">
+                      Name is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group row no-gutters">
+                <label class="col-3 col-sm-2 col-form-label">SKU</label>
+                <div class="col col-4">
+                  <input type="text" class="form-control" placeholder="SKU" formControlName="sku" required>
+                  <div class="alert-danger"
+                       *ngIf="!pForm.controls['sku'].valid && (pForm.controls['sku'].touched)">
+                    <div [hidden]="!pForm.controls['sku'].errors.required">
+                      SKU is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group row no-gutters">
+                <label class="col-3 col-sm-2 col-form-label">Description</label>
+                <div class="col">
+                  <textarea type="text" rows='5' class="form-control" formControlName="description" required
+                            placeholder="Enter description"></textarea>
+                  <div class="alert-danger"
+                       *ngIf="!pForm.controls['description'].valid && (pForm.controls['description'].touched)">
+                    <div [hidden]="!pForm.controls['description'].errors.required">
+                      Description is required.
+                    </div>
+                    <div [hidden]="!pForm.controls['description'].errors.minlength">
+                      Description must be have 10 character length.
+                    </div>
+                    <div [hidden]="!pForm.controls['desc'].errors.maxlength">
+                      Description must be have 1000 character length.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group row no-gutters">
+                <label class="col-3 col-sm-2 col-form-label">Price</label>
+                <div class=' col-2'>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input type='text' class='form-control' formControlName="price">
+                  </div>
+                  <div class="alert-danger"
+                       *ngIf="!pForm.controls['price'].valid && (pForm.controls['price'].touched)">
+                    <div [hidden]="!pForm.controls['price'].errors.required">
+                      Price is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group row no-gutters">
+                <label class="col-3 col-sm-2 col-form-label">Brand Name</label>
+                <div class="col-3">
+                  <select class="custom-select" formControlName="brand">
+                    <option value="null">Choose a state</option>
+                    <option *ngFor="let b of brands" [value]="b.id">{{b.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="form-group row no-gutters">
+                <label class="col-3 col-sm-2 col-form-label">Enabled</label>
+                <div class="col p-2">
+                  <mdb-checkbox formControlName="enabled"></mdb-checkbox>
+                </div>
+              </div>
+
+
+              <div class="row no-gutters">
+                <div class="col offset-3 offset-sm-2">
+                  <button class="btn btn-secondary mr-2" type="reset">Reset</button>
+                  <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="tab-pane fade" id="v-pills-images">
+        <h5>Product Images</h5>
+        <div class="card card-style-1">
+          <div class="card-body">
+
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="v-pills-settings">
+        <h5>Product Settings</h5>
+        <div class="card card-style-1">
+          <div class="card-body">
+            ...
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

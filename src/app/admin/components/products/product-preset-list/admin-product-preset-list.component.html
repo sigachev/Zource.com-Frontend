@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+             class="table table-bordered table-sm has-checkAll mb-0">
+        <caption *ngIf='presets' class="p-0 text-right"><small>Total {{presets.length}} entries</small></caption>
+        <thead class="thead-primary">
+        <tr>
+          <th>Details</th>
+          <th>ID</th>
+          <th>First name</th>
+          <th>Last name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor='let p of presets; index as i'>
+
+          <tr #someInput>
+            <td class="text-center">
+              <a (click)='displayTR(i)' class="detail-toggle text-secondary" role="button"></a>
+            </td>
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{i}}</td>
+          </tr>
+          <ng-container *ngIf='displayChild[i]'>
+            <tr class='detail-row'>
+              <td colspan="4">
+                <ul class="data-detail ml-5">
+                  <li><span>Age</span><span>{{p.id}}</span></li>
+                  <li><span>Start date</span><span>2008/11/28</span></li>
+                </ul>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
+
+
