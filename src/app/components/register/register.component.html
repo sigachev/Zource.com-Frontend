@@ -1,42 +1,100 @@
 <div class="container">
-  <div class="card card-container">
-    <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" id="profile-img" class="profile-img-card"/>
-    <form name="form-signup" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-        {{errorMessage}}
-      </div>
-      <div class="form-group" [ngClass]="{'has-error':f.submitted &&!name.valid}">
-        <label for="name">First Name</label>
-        <input type="text" name="name" class="form-control input-text-custom" id="name" [(ngModel)]="user.firstName" #name="ngModel" required/>
-        <div class="alert alert-danger" *ngIf="f.submitted && !name.valid">
-          First name is required.
-        </div>
-      </div>
+  <div class='row justify-content-center'>
+    <div class="card registration-card mb-3">
+      <div class="card-body p-4">
+        <h3>Create Account</h3>
+        <p class="font-weight-light text-secondary">It's free and only takes a minute.</p>
+        <hr>
 
-      <div class="form-group" [ngClass]="{'has-error':f.submitted &&!name.valid}">
-        <label for="name">Last Name</label>
-        <input type="text" name="name" class="form-control input-text-custom" id="lastName" [(ngModel)]="user.lastName" #name="ngModel" required/>
-        <div class="alert alert-danger" *ngIf="f.submitted && !name.valid">
-          Last name is required.
-        </div>
-      </div>
+        <form name="form-signup" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+          </div>
 
-      <div class="form-group" [ngClass]="{'has-error':f.submitted &&!username.valid}">
-        <label for="username">Username</label>
-        <input type="text" name="username" class="form-control input-text-custom" id="username" [(ngModel)]="user.username" #username="ngModel" required/>
-        <div class="alert alert-danger" *ngIf="f.submitted && !username.valid">
-          A valid username is required.
-        </div>
+          <!--First name-->
+          <div class="form-group" [ngClass]="{'has-error':f.submitted &&!firstName.valid}">
+            <label class="font-size-sm">First Name</label>
+            <input [(ngModel)]="user.firstName" type="text" class="form-control bg-gray-200 border-gray-200"
+                   name="InputFirstName" placeholder="First name" #firstName="ngModel" required>
+            <div class="alert alert-danger" *ngIf="f.submitted && !firstName.valid">
+              First name is required.
+            </div>
+          </div>
+
+          <!--Last name-->
+          <div class="form-group" [ngClass]="{'has-error':f.submitted &&!lastName.valid}">
+            <label class="font-size-sm">Last Name</label>
+            <input [(ngModel)]="user.lastName" type="text" class="form-control bg-gray-200 border-gray-200"
+                   name="InputLastName" placeholder="Last name" #lastName="ngModel" required>
+            <div class="alert alert-danger" *ngIf="f.submitted && !lastName.valid">
+              Last name is required.
+            </div>
+          </div>
+
+          <!--Username-->
+          <div class="form-group" [ngClass]="{'has-error':f.submitted &&!username.valid}">
+            <label class="font-size-sm">Username</label>
+            <input usernameValidator required  [(ngModel)]="user.username" type="text" class="form-control bg-gray-200 border-gray-200"
+                   name="InputUsername" #username="ngModel" autocomplete='off'>
+
+            <div class="alert alert-danger" *ngIf="username.hasError('usernameValidator')">
+              Username error
+            </div>
+
+          </div>
+
+          <!--Email-->
+          <div class="form-group" [ngClass]="{'has-error':f.submitted &&!email.valid}">
+            <label class="font-size-sm">Email address</label>
+            <input [(ngModel)]="user.email" type="email" class="form-control bg-gray-200 border-gray-200"
+                   name="InputEmail" placeholder="yourname@yourmail.com" #email="ngModel" required
+                    emailValidator>
+            <div class="alert alert-danger" *ngIf="f.submitted && !email.valid && (email.dirty || email.touched)">
+              <p *ngIf="email.errors.required">Email is required</p>
+              <p *ngIf="email.errors.minlength">Email must contain at least the @ character</p>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="email.hasError('emailValidator')">
+              Error email
+            </div>
+          </div>
+
+          <!--Password-->
+          <div class="form-group" [ngClass]="{'has-error':f.submitted &&!password.valid}">
+            <label class="font-size-sm">Password</label>
+            <input [(ngModel)]="user.password" type="password" class="form-control bg-gray-200 border-gray-200"
+                   name="InputPassword"
+                   placeholder="Enter your password" #password="ngModel" minlength='6'>
+            <div class="alert alert-danger" *ngIf="f.submitted && !password.valid">
+              Password is required.
+            </div>
+
+          </div>
+
+          <!--Checkbox TERMS AND CONDITIONS-->
+          <div class="form-group">
+            <div class="custom-control custom-checkbox" >
+              <input type="checkbox" [(ngModel)]="checkboxTermsFlag" #checkboxFlag='ngModel' name='checkBoxTermsFlag' id='checkBoxTermsFlag'
+
+                     class="custom-control-input">
+              <label for='checkBoxTermsFlag' class="custom-control-label">I agree with
+                <a href="/terms-and-conditions"><u>terms and conditions</u></a></label>
+            </div>
+            <div class="alert alert-danger" *ngIf="f.submitted && !checkboxFlag.value">
+              Please accept terms and conditions.
+            </div>
+          </div>
+          <button type="submit" [disabled]="form.pending" class="btn btn-primary btn-block">CREATE NEW ACCOUNT</button>
+          <div class="divider-text">or register with</div>
+          <button type="button" class="btn btn-sm btn-outline-primary btn-block has-icon">Facebook</button>
+          <button type="button" class="btn btn-sm btn-outline-info btn-block has-icon">Twitter</button>
+          <div class="small mt-4">
+            Already have an account ?
+            <a [routerLink]="['/login']" class="text-decoration-underline">Login</a>
+          </div>
+        </form>
       </div>
-      <div class="form-group" [ngClass]="{'has-error':f.submitted &&!password.valid}">
-        <label for="password">Password</label>
-        <input type="password" name="password" class="form-control input-text-custom" id="password" [(ngModel)]="user.password" #password="ngModel" required/>
-        <div class="alert alert-danger" *ngIf="f.submitted && !password.valid">
-          Password is required.
-        </div>
-      </div>
-      <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin form-submit-button">Sign Up</button>
-    </form>
-    <a [routerLink]="['/login']" class="btn btn-link">I have an Account!</a>
+    </div>
   </div>
+
 </div>

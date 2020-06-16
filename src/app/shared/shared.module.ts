@@ -9,7 +9,6 @@ import {BreadcrumbComponent} from '../layout/breadcrumb/breadcrumb.component';
 import {TruncateTextPipe} from '../pipes/truncate-text.pipe';
 import {UomNameFormatPipe} from '../pipes/uom-name-format.pipe';
 import {LoginComponent} from '../components/login/login.component';
-import {RegisterComponent} from '../components/register/register.component';
 import {ProfileComponent} from '../components/profile/profile.component';
 import {BrandsComponent} from '../components/brands/brands.component';
 import {CardsModule, ToastModule, ToastService} from 'ng-uikit-pro-standard';
@@ -25,7 +24,6 @@ import {PageNotFoundComponent} from '../components/errors/page-not-found.compone
     TruncateTextPipe,
     UomNameFormatPipe,
     LoginComponent,
-    RegisterComponent,
     ProfileComponent,
     BrandsComponent,
     BrandDetailsComponent,

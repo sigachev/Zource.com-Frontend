@@ -6,10 +6,10 @@
     <div class="container-fluid d-flex align-items-center">
 
       <nav class="nav mr-1 d-none d-md-flex">
-        <a class="nav-link nav-link-sm has-icon bg-white pl-0" href="#"><i class="material-icons mr-1">phone</i> 212 123
-          456 789</a>
+        <a class="nav-link nav-link-sm has-icon bg-white pl-0" href="#"><i class="material-icons mr-1">phone</i> <!--212 123
+          456 789--></a>
         <a class="nav-link nav-link-sm has-icon bg-white" href="#"><i class="material-icons mr-1">mail_outline</i>
-          support@mimity.com</a>
+          info@zource.com</a>
 
 
       </nav>
@@ -24,13 +24,7 @@
       </nav>
 
 
-      <nav class="nav nav-gap-x-1 ml-auto mr-1">
-
-        <div *ngIf='isAdmin()' class="nav-item nav-pills dropdown">
-          <a class="nav-link nav-link-sm" href="/admin">
-            <b>Admin Panel</b>
-          </a>
-        </div>
+      <nav class="nav  ml-auto mr-1">
 
         <div class="nav-item nav-pills dropdown">
           <a class="nav-link nav-link-sm" href="#">
@@ -47,11 +41,10 @@
             Contacts
           </a>
         </div>
+
       </nav>
 
-
       <nav class="nav" *ngIf='currentUser; else signInButton'>
-
 
         <div class="nav-item nav-pills dropdown dropdown-hover">
           <a class="nav-link nav-link-sm dropdown-toggle has-icon hover" href="#" id="userDropdown" role="button"
@@ -59,9 +52,9 @@
             <i class="material-icons mr-1">person</i> Hi, {{currentUser.firstName}}
           </a>
           <div class="dropdown-menu dropdown-menu-right font-size-sm" aria-labelledby="userDropdown">
-            <a class="dropdown-item has-icon pr-5" href="account-orders.html"><i class="material-icons mr-2">shopping_cart</i>
+            <a class="dropdown-item has-icon pr-5" href="/orders"><i class="material-icons mr-2">shopping_cart</i>
               My Orders</a>
-            <a class="dropdown-item has-icon pr-5" href="account-wishlist.html"><i class="material-icons mr-2">favorite_border</i>
+            <a class="dropdown-item has-icon pr-5" href="/wishlist"><i class="material-icons mr-2">favorite_border</i>
               Wishlist</a>
             <a class="dropdown-item has-icon pr-5" [routerLink]="['/profile']"><i class="material-icons mr-2">person</i>
               Account Setting</a>
@@ -72,6 +65,14 @@
         </div>
 
 
+      </nav>
+
+      <nav class="nav nav-gap-x-1 ml-1 mr-1">
+        <div *ngIf='isAdmin()' class="nav-item nav-pills dropdown">
+          <a class="btn-faded-danger btn btn-sm" href="/admin">
+            Admin Panel
+          </a>
+        </div>
       </nav>
 
       <ng-template #signInButton>

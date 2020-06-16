@@ -16,6 +16,9 @@ import {PageNotFoundComponent} from '../components/errors/page-not-found.compone
 import {CategoryComponent} from '../components/categoty/category.component';
 import {CategoryModule} from '../components/categoty/category.module';
 import {InternalServerErrorComponent} from '../components/errors/internal-server-error/internal-server-error.component';
+import {DirectivesModule} from '../directives/directives.module';
+import {AppModule} from '../app.module';
+import {FormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -54,19 +57,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    RegisterComponent,
+  ],
   imports: [
-    CommonModule,
-    SharedModule,
     CategoryModule,
     RouterModule.forChild(routes),
     HomepageModule,
+    DirectivesModule,
+    FormsModule,
+    CommonModule
   ],
   exports: [RouterModule],
-  /*  providers: [
-      ProductService,
-      ProductResolverService
-    ]*/
 })
 export class FrontendModule {
 }

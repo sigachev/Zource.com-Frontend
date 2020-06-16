@@ -12,8 +12,6 @@ import {MDBBootstrapModulesPro, ToastModule} from 'ng-uikit-pro-standard';
 import {ProductService} from './services/product.service';
 import {BrandService} from './services/brand.service';
 import {AdminModule} from './admin/admin.module';
-import {OnlyIntegerDirective} from './directives/only-integer.directive';
-import {OnlyNumberDirective} from './directives/only-number.directive';
 import {FrontendLayoutComponent} from './layout/frontend-layout.component';
 import {AdminLayoutComponent} from './admin/layout/admin-layout.component';
 import {FrontendModule} from './layout/frontend.module';
@@ -31,24 +29,19 @@ import { InternalServerErrorComponent } from './components/errors/internal-serve
   declarations: [
     AppComponent,
     DetailComponent,
-    OnlyIntegerDirective,
-    OnlyNumberDirective,
     FrontendLayoutComponent,
     AdminLayoutComponent,
-    InternalServerErrorComponent,
+    InternalServerErrorComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MDBBootstrapModulesPro.forRoot(),
-    /* HttpClientInMemoryWebApiModule.forRoot(ProductData),*/
-    /* import ng-zorro-antd root module，you should import NgZorroAntdModule and avoid importing sub modules directly */
-
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    BrowserAnimationsModule,
     MatSidenavModule,
     MatListModule,
     MatIconModule,
@@ -57,7 +50,6 @@ import { InternalServerErrorComponent } from './components/errors/internal-serve
     HomepageModule,
     ToastModule.forRoot(),
     AdminModule,
-    FrontendModule
   ],
   providers: [
    /* {provide: NZ_I18N, useValue: en_US},*/
@@ -66,7 +58,8 @@ import { InternalServerErrorComponent } from './components/errors/internal-serve
     ProductService, BrandService
   ],
   bootstrap: [AppComponent],
-  exports: [],
+  exports: [
+  ],
   schemas: []
 })
 export class AppModule {

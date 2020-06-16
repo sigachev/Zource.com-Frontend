@@ -6,7 +6,7 @@
           <div class="modal fade modal-content-right modal-shown-static" id="signinModal" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-sm" role="document">
 
-              <div class="modal-content" id="signinContent">
+              <div class="modal-content shadow-none">
                 <div class="text-center">
                   <h3 class="modal-title">Sign in</h3>
                   <em>to your account</em>
@@ -19,8 +19,7 @@
 
 
                 <div class="modal-body">
-                  <form name="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-
+                  <form name="form-signin" (ngSubmit)="f.form.valid && login()" #f="ngForm">
 
                     <div class="form-group" [ngClass]="{'has-error':f.submitted &&!username.valid}">
                       <label for="username">Username</label>
@@ -28,11 +27,13 @@
                   <i class="material-icons">mail_outline</i>
                   <input type="text" name="username" class="form-control input-text-custom" id="username"
                          [(ngModel)]="user.username" #username="ngModel" required/>
-                  </span>
+                      </span>
                       <div class="alert alert-danger" *ngIf="f.submitted && !username.valid">
                         A valid username is required.
                       </div>
                     </div>
+
+
                     <div class="form-group" [ngClass]="{'has-error':f.submitted &&!password.valid}">
                       <label for="password">Password</label>
                       <span class="input-icon">
@@ -44,7 +45,6 @@
                         Password is required.
                       </div>
                     </div>
-
 
 
                     <div class="form-group d-flex justify-content-between">
@@ -61,16 +61,13 @@
                   <hr>
                   <div class="text-center">
                     <p class="font-italic">Or sign in via</p>
-                    <button class="btn m-2 btn-icon btn-faded-primary rounded-circle" data-toggle="tooltip"
-                            title="Facebook" data-container="#signinContent">
+                    <button class="btn m-2 btn-icon btn-faded-primary rounded-circle">
                       <i class="custom-icon" data-icon="facebook" data-size="20x20"></i>
                     </button>
-                    <button class="btn m-2 btn-icon btn-faded-info rounded-circle" data-toggle="tooltip" title="Twitter"
-                            data-container="#signinContent">
+                    <button class="btn m-2 btn-icon btn-faded-info rounded-circle">
                       <i class="custom-icon" data-icon="twitter" data-size="20x20"></i>
                     </button>
-                    <button class="btn m-2 btn-icon btn-faded-danger rounded-circle" data-toggle="tooltip"
-                            title="Google" data-container="#signinContent">
+                    <button class="btn m-2 btn-icon btn-faded-danger rounded-circle">
                       <i class="custom-icon" data-icon="gplus" data-size="20x20"></i>
                     </button>
                   </div>

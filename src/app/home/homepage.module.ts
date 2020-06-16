@@ -19,11 +19,10 @@ import {CarouselModule} from 'ng-uikit-pro-standard';
     TopCategoriesComponent,
 
   ],
-    imports: [SharedModule,
-        CommonModule, CarouselModule,
+    imports: [
+      CarouselModule,
     ],
   exports: [
-    CommonModule,
     MainSliderComponent
   ]
 })

@@ -3,6 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  BUILD_ENV: 'prod',
+  S3_BUCKET: 'zource.com',
+  APP_NAME: 'zource.com',
   myDomain: 'localhost',
   myPort: 5000,
   apiUrl: 'http://localhost:5000/api',
