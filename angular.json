@@ -34,7 +34,6 @@
               /*"src/assets/fonts/material-icons/material-icons.css",*/
               "node_modules/font-awesome/css/font-awesome.css",
               "src/assets/fonts/glyphicons/glyphicons.css",
-           /*   "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",*/
               "src/assets/css/style.css",
               "src/assets/admin/css/myStyles.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
