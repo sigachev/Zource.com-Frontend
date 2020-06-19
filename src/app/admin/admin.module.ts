@@ -44,6 +44,7 @@ import {AdminProductPresetListComponent} from './components/products/product-pre
 import {DataTablesModule} from 'angular-datatables';
 import { PresetChildDirective } from './components/products/product-preset-list/preset-child.directive';
 import {TableModule} from 'primeng';
+import { AdminNewProductComponent } from './components/products/product/admin-new-product/admin-new-product.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,14 @@ const routes: Routes = [
     component: AdminProductPresetComponent,
     data: {
       breadcrumb: 'Settings for new product'
+    }
+  },
+  {
+    path: 'product/new',
+    resolve: {resolvedBrandsList: AdminProductResolverService},
+    component: AdminNewProductComponent,
+    data: {
+      breadcrumb: 'New Product'
     }
   },
   {
@@ -124,6 +133,7 @@ const routes: Routes = [
     AdminProfileComponent,
     AdminProductPresetListComponent,
     PresetChildDirective,
+    AdminNewProductComponent,
   ],
   imports: [
     CommonModule,

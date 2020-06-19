@@ -144,9 +144,10 @@ export class ProductService {
     }*/
 
   private createProduct(product: Product, headers: HttpHeaders): Observable<Product> {
-    product.id = null;
-    // @ts-ignore
-    return this.http.post<Product>(this.productsUrl + '/new', product, {headers})
+
+    product.id = 0;
+
+    return this.http.post<Product>(this.productUrl + '/new', product, {headers})
       .pipe(
         tap(data => console.log('createProduct: ' + JSON.stringify(data))),
         tap(data => {

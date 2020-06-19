@@ -16,8 +16,8 @@
             <label class="font-size-sm">First Name</label>
             <input [(ngModel)]="user.firstName" type="text" class="form-control bg-gray-200 border-gray-200"
                    name="InputFirstName" placeholder="First name" #firstName="ngModel" required>
-            <div class="alert alert-danger" *ngIf="f.submitted && !firstName.valid">
-              First name is required.
+            <div class="alert alert-danger" *ngIf="firstName.invalid && firstName.dirty">
+              First name is required
             </div>
           </div>
 
@@ -26,19 +26,22 @@
             <label class="font-size-sm">Last Name</label>
             <input [(ngModel)]="user.lastName" type="text" class="form-control bg-gray-200 border-gray-200"
                    name="InputLastName" placeholder="Last name" #lastName="ngModel" required>
-            <div class="alert alert-danger" *ngIf="f.submitted && !lastName.valid">
-              Last name is required.
+            <div class="alert alert-danger" *ngIf="lastName.invalid && lastName.dirty">
+              Last name is required
             </div>
           </div>
 
           <!--Username-->
           <div class="form-group" [ngClass]="{'has-error':f.submitted &&!username.valid}">
             <label class="font-size-sm">Username</label>
-            <input usernameValidator required  [(ngModel)]="user.username" type="text" class="form-control bg-gray-200 border-gray-200"
-                   name="InputUsername" #username="ngModel" autocomplete='off'>
+            <input [(ngModel)]="user.username" type="text" class="form-control bg-gray-200 border-gray-200"
+                   name="InputUsername" #username="ngModel" autocomplete='off'
+                   usernameValidator minlength='5' required>
 
-            <div class="alert alert-danger" *ngIf="username.hasError('usernameValidator')">
-              Username error
+            <div class="alert alert-danger" *ngIf="username.invalid && username.dirty">
+              <span *ngIf="username.errors.required">Username is required</span>
+              <span *ngIf="username.errors.minlength">Minimum length is 5 characters</span>
+              <span *ngIf="username.hasError('usernameValidator')">This username already exists</span>
             </div>
 
           </div>
@@ -48,14 +51,11 @@
             <label class="font-size-sm">Email address</label>
             <input [(ngModel)]="user.email" type="email" class="form-control bg-gray-200 border-gray-200"
                    name="InputEmail" placeholder="yourname@yourmail.com" #email="ngModel" required
-                    emailValidator>
-            <div class="alert alert-danger" *ngIf="f.submitted && !email.valid && (email.dirty || email.touched)">
-              <p *ngIf="email.errors.required">Email is required</p>
-              <p *ngIf="email.errors.minlength">Email must contain at least the @ character</p>
-            </div>
+                   emailValidator uniqueEmailValidator>
 
-            <div class="alert alert-danger" *ngIf="email.hasError('emailValidator')">
-              Error email
+            <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+              <span *ngIf="email.hasError('emailValidator')"> Email format is invalid</span>
+              <span *ngIf="email.hasError('uniqueEmailValidator')"> This email is already in use</span>
             </div>
           </div>
 
@@ -63,28 +63,47 @@
           <div class="form-group" [ngClass]="{'has-error':f.submitted &&!password.valid}">
             <label class="font-size-sm">Password</label>
             <input [(ngModel)]="user.password" type="password" class="form-control bg-gray-200 border-gray-200"
-                   name="InputPassword"
+                   name="inputPassword"
                    placeholder="Enter your password" #password="ngModel" minlength='6'>
-            <div class="alert alert-danger" *ngIf="f.submitted && !password.valid">
-              Password is required.
+            <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+              Password minimum length is 6 characters.
+            </div>
+          </div>
+
+          <!--Confirm Password-->
+          <div class="form-group" [ngClass]="{'has-error':f.submitted &&!confirmPassword.valid}">
+            <label class="font-size-sm">Confirm Password</label>
+            <input [(ngModel)]="confPassword" type="password" class="form-control bg-gray-200 border-gray-200"
+                   name="InputPassword" validateEqual="inputPassword"
+                   placeholder="Confirm your password" #confirmPassword="ngModel">
+            <div class="alert alert-danger" *ngIf="confirmPassword.invalid && !confirmPassword.pristine">
+              Passwords must match
+            </div>
+            <div class="alert alert-success" *ngIf="confirmPassword.valid && !confirmPassword.pristine">
+              Passwords match
             </div>
 
           </div>
 
           <!--Checkbox TERMS AND CONDITIONS-->
           <div class="form-group">
-            <div class="custom-control custom-checkbox" >
-              <input type="checkbox" [(ngModel)]="checkboxTermsFlag" #checkboxFlag='ngModel' name='checkBoxTermsFlag' id='checkBoxTermsFlag'
-
-                     class="custom-control-input">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" [(ngModel)]="checkboxTermsFlag" #checkboxFlag='ngModel' name='checkBoxTermsFlag'
+                     id='checkBoxTermsFlag' class="custom-control-input"
+              >
               <label for='checkBoxTermsFlag' class="custom-control-label">I agree with
                 <a href="/terms-and-conditions"><u>terms and conditions</u></a></label>
             </div>
-            <div class="alert alert-danger" *ngIf="f.submitted && !checkboxFlag.value">
+            <div class="alert alert-danger" *ngIf="f.submitted && !checkboxTermsFlag">
               Please accept terms and conditions.
             </div>
           </div>
-          <button type="submit" [disabled]="form.pending" class="btn btn-primary btn-block">CREATE NEW ACCOUNT</button>
+          <button type="submit" [disabled]="!f.valid || !checkboxTermsFlag ? true : false" class="btn btn-primary btn-block">CREATE
+            NEW ACCOUNT
+          </button>
+          <div>Form valid: {{f.form.valid}}</div>
+          <div>F valid: {{f.valid}}</div>
+          <div>Condition: {{!f.valid && !checkboxTermsFlag}}</div>
           <div class="divider-text">or register with</div>
           <button type="button" class="btn btn-sm btn-outline-primary btn-block has-icon">Facebook</button>
           <button type="button" class="btn btn-sm btn-outline-info btn-block has-icon">Twitter</button>

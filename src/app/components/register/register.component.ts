@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
   user: User = new User();
   errorMessage: string;
   checkboxTermsFlag = false;
+  confPassword = '';
   usernameAlredyExists = false;
 
 
@@ -34,7 +35,6 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/profile']);
       return;
     }
-
     this.user.firstName = 'AAAA';
     this.user.lastName = 'AAAA';
     this.user.email = 'a@aa.com';
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
         });
 
 
-      if (this.checkboxTermsFlag && this.form.valid) {
+      if (this.form.valid) {
         console.log('Username already exists: ' + this.usernameAlredyExists);
         this.userService.register(this.user).subscribe(data => {
             this.router.navigate(['/login']);

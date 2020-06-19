@@ -50,9 +50,9 @@ export class AdminProductImagesComponent implements OnInit {
 
     this.productService.getProduct(id).subscribe((p: Product) => {
         this.product = p;
-        this.product.images = p.images.sort((a, b) => a.imageOrder - b.imageOrder);
+        this.product.images = p.images?.sort((a, b) => a.imageOrder - b.imageOrder);
 
-        p.images.forEach(img => {
+        p.images?.forEach(img => {
           this.productImageDTO = new ProductImageDTO(img.id, img.fileName, img.imageOrder, null);
           console.log('Img id: ' + img.id);
           this.productImageDTOArray.push(this.productImageDTO);

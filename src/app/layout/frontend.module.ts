@@ -22,7 +22,7 @@ import {FormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', data: {breadcrumb: 'Log In'}, component: LoginComponent},
   {path: 'register', data: {breadcrumb: 'Sign Up'}, component: RegisterComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: {breadcrumb: 'Profile', roles: [Role.USER, Role.ADMIN]}},
 

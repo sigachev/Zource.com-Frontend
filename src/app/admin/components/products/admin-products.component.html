@@ -1,134 +1,72 @@
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
 
-
-
-<div class="page-title"></div>
-<div class='row'>
-  <div class='col col-4 form-inline'>
-      <span class="input-icon">
-        <i class="material-icons">search</i>
-          <input class='form-control w-50 mr-1' placeholder="Search products" [(ngModel)]='name' (keyup)="applyFilter($event.target.value)" #input>
-         <button type="button" class="btn btn-text-danger btn-icon rounded-circle ml-2" (click)='clearSearch()'><i class="material-icons">clear</i></button>
-      </span>
-
-
+<div class="d-flex">
+  <div class="list-with-gap">
+    <button [routerLink]="['/admin/product/new']" class="btn btn-primary has-icon" type="button" data-toggle="modal" data-target="#addUser"><i class="material-icons mr-2">add_circle_outline</i>Add new product</button>
+    <button class="btn btn-light btn-sm d-none d-sm-block">Import product</button>
+    <button class="btn btn-light btn-sm d-none d-sm-block">Export product (Excel)</button>
   </div>
+  <button class="btn btn-primary ml-auto align-self-end has-icon" type="button" onclick="document.querySelector('#filter').toggleAttribute('hidden')">
+    <i class="material-icons mr-2">filter_list</i>Filter
+  </button>
+</div>
 
-    <div class="col col-2 spinner-container float-left" *ngIf="this.loading">
-      <mat-spinner [diameter]="45"></mat-spinner>
+<div class="card mt-3">
+  <div class="card-body">
+    <div class="table-responsive">
+
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+             class="table table-bordered table-sm has-checkAll mb-0">
+        <caption *ngIf='products' class="p-0 text-right"><small>Total {{products.length}} entries</small></caption>
+        <thead class="thead-primary">
+        <tr>
+          <th>Details</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>SKU</th>
+          <th>Price</th>
+          <th>Brand</th>
+          <th>Enabled</th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor='let p of products; index as i'>
+
+          <tr #someInput>
+            <td class="text-center">
+              <a class="detail-toggle text-secondary" role="button"></a>
+            </td>
+            <td><a [routerLink]="['/admin/product/', p.id]">{{p.id}}</a></td>
+            <td><a [routerLink]="['/admin/product/', p.id]">{{p.name}}</a></td>
+            <td>{{p.sku}}</td>
+            <td>{{p.price |currency:'USD':'symbol-narrow'}}</td>
+            <td><a [routerLink]="['/admin/brand/', p.brand.id]">{{p.brand.name}}</a></td>
+            <td>
+              <span class='badge badge-pill'
+                    [ngClass]="{'badge-danger': !p.enabled, 'badge-success': p.enabled}">{{p.enabled}}
+              </span>
+            </td>
+          </tr>
+          <ng-container *ngIf='displayChild[i]'>
+            <tr class='detail-row'>
+              <td colspan="4">
+                <ul class="data-detail ml-5">
+                  <li><span>Age</span><span>{{p.id}}</span></li>
+                  <li><span>Start date</span><span>2008/11/28</span></li>
+                </ul>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+        </tbody>
+      </table>
+
     </div>
-
-  <div class='col-6 '></div>
-
-  <div class='col-2 my-2 float-right' >
-    <select class="custom-select" [(ngModel)]="this.brandId" (change)='brandFilterChanged($event.target.value)'>
-      <option value='0'>All Brands</option>
-      <option *ngFor="let b of brands" [value]="b.id" >{{b.name}}</option>
-    </select>
-
-  </div>
-
-</div>
-
-
-
-
-
-
-  <mat-table class="table table-align-middle my-2" [dataSource]="dataSource" matSort >
-    <tr class="column-filter" id="filter">
-      <th></th>
-      <th><input type="text" class="form-control" placeholder="Search User Fullname" [(ngModel)]='name' (keyup)="applyFilter($event.target.value)" #input></th>
-      <th><input type="text" class="form-control" placeholder="Search Mobile"></th>
-      <th></th>
-      <th>     <select class="custom-select" [(ngModel)]="this.brandId" (change)='brandFilterChanged($event.target.value)'>
-        <option value='0'>All Brands</option>
-        <option *ngFor="let b of brands" [value]="b.id" >{{b.name}}</option>
-      </select>
-      </th>
-
-    </tr>
-
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
-      <mat-cell *matCellDef="let product">
-        <a [routerLink]="['/admin/product/', product.id]">{{product.id}}</a>
-      </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="sku">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>SKU</mat-header-cell>
-      <mat-cell *matCellDef="let product">
-        <a [routerLink]="['/admin/product/', product.id]">{{product.sku}}</a>
-      </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
-      <mat-cell *matCellDef="let product">
-        <a [routerLink]="['/admin/product/', product.id]">{{product.name}}</a>
-      </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="price">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
-      <mat-cell *matCellDef="let product">
-       {{product.price | currency}}
-      </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="description">
-      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
-      <mat-cell *matCellDef="let product">{{product.description}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="brand">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Brand</mat-header-cell>
-      <mat-cell *matCellDef="let product">{{product.brand.name}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="enabled">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
-      <mat-cell class="description-cell text-center h6"  *matCellDef="let product">
-        <div *ngIf="product.enabled; then thenBlock else elseBlock"></div>
-        <ng-template #thenBlock><span class="badge badge-pill badge-success">Active</span></ng-template>
-        <ng-template #elseBlock><span class="badge badge-pill badge-danger">Inactive</span></ng-template>
-      </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
-  </mat-table>
-  <mat-paginator [pageSize]="3" [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
-<!--<button class='btn btn-primary' (click)='action()'>Assign Data Source</button>
-<button class='btn btn-primary' (click)='brandFilterChanged($event.target.value)'>Print event</button>-->
-
-
-
-<div class='card'>
-  <div class='card-body'>
-
-<h3 class="first">Basic</h3>
-<p-table [value]="products" sortMode="multiple">
-  <ng-template pTemplate="header">
-    <tr>
-      <th>Vin</th>
-      <th>Year</th>
-      <th>Brand</th>
-      <th>Color</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-product>
-    <tr>
-      <td>{{product.id}}</td>
-      <td>{{product.name}}</td>
-      <td>{{product.brand.name}}</td>
-      <td>{{product.sku}}</td>
-    </tr>
-  </ng-template>
-</p-table>
-
-
   </div>
 </div>
+
+
+
+

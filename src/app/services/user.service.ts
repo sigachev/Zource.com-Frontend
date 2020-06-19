@@ -51,9 +51,6 @@ export class UserService {
 
 
 
-  checkIfUsernameExists(username: string): Observable<any> {
-    return this.http.get(environment.apiUrl + '/checkusername/' + username);
-  }
 
   register(user: User): Observable<any> {
     return this.http.post(environment.apiUrl + '/registration', JSON.stringify(user),
@@ -70,5 +67,13 @@ export class UserService {
       {headers: {'Content-Type': 'application/json; charset=UTF-8'}});
   }
 
+  checkIfUsernameExists(username: string): Observable<any> {
+    return this.http.get(environment.apiUrl + '/user/check/username/' + username);
+  }
+
+
+  checkIfEmailExists(email: string): Observable<any> {
+    return this.http.put(environment.apiUrl + '/user/check/email', email);
+  }
 
 }

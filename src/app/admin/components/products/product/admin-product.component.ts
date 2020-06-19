@@ -65,14 +65,10 @@ export class AdminProductComponent implements OnInit {
       (err: any) => this.errorMessage = err,
     );
 
-
   }
 
   saveProduct(values) {
 
-    /*
-        console.log('Values: ' + JSON.stringify(values));
-        console.log('Product: ' + JSON.stringify(this.product));*/
     this.product.name = values.name;
     this.product.price = values.price;
     this.product.description = values.description;
