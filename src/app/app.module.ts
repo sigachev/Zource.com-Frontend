@@ -23,7 +23,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {ErrorInterceptor} from './config/interceptors/error.interceptor';
 import {JwtInterceptor} from './config/interceptors/jwt.interceptor';
 import { InternalServerErrorComponent } from './components/errors/internal-server-error/internal-server-error.component';
+import {JwtModule} from '@auth0/angular-jwt';
+import {environment} from '../environments/environment';
+import {AuthGuard} from './guards/auth.guard';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -38,6 +44,13 @@ import { InternalServerErrorComponent } from './components/errors/internal-serve
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: environment.whitelist,
+        blacklistedRoutes: [],
+      },
+    }),
     MDBBootstrapModulesPro.forRoot(),
     FormsModule,
     ReactiveFormsModule,
@@ -55,7 +68,7 @@ import { InternalServerErrorComponent } from './components/errors/internal-serve
    /* {provide: NZ_I18N, useValue: en_US},*/
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    ProductService, BrandService
+      AuthGuard,ProductService, BrandService
   ],
   bootstrap: [AppComponent],
   exports: [

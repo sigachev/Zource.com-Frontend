@@ -21,12 +21,10 @@ export class RegisterComponent implements OnInit {
   usernameAlredyExists = false;
 
 
-  constructor(layout: FrontendLayoutComponent,
-              private authService: AuthenticationService,
+  constructor(private authService: AuthenticationService,
               private userService: UserService,
               private router: Router) {
-    layout.displayBreadcrumb = true;
-    layout.displayHomeSlider = false;
+
   }
 
 

@@ -12,6 +12,7 @@ export const environment = {
   myPort: 5000,
   apiUrl: 'http://localhost:5000/api',
   s3Bucket: 'https://zource-bucket.s3.us-east-1.amazonaws.com/',
+  whitelist: ['localhost:5000']
 };
 
 /*
