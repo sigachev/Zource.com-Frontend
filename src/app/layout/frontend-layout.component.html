@@ -1,111 +1,133 @@
-<!--    <link rel="stylesheet" [href]='sanitizer.bypassSecurityTrustResourceUrl("../assets/css/style.css")'>-->
-
-
 <!-- TOP BAR -->
-  <div class="topbar">
-    <div class="container-fluid d-flex align-items-center">
+<div class="topbar">
+  <div class="container-fluid d-flex align-items-center">
 
-      <nav class="nav mr-1 d-none d-md-flex">
-        <a class="nav-link nav-link-sm has-icon bg-white pl-0" href="#"><i class="material-icons mr-1">phone</i> <!--212 123
-          456 789--></a>
-        <a class="nav-link nav-link-sm has-icon bg-white" href="#"><i class="material-icons mr-1">mail_outline</i>
-          info@zource.com</a>
+    <nav class="nav mr-1  d-md-flex">
+      <!-- <a class="nav-link nav-link-sm has-icon bg-white pl-0" href="#"><i class="material-icons mr-1">phone</i> 212 123
+         456 789</a>-->
+      <a class="nav-link nav-link-sm has-icon bg-white" href="#">
+        <i class="material-icons mr-1">mail_outline</i>
+        info@zource.com
+      </a>
+    </nav>
+
+    <nav class="nav nav-circle  d-sm-flex">
+      <a class="nav-link nav-link-sm nav-icon p-0" href="#">
+        <i class="custom-icon fa fa-sm fa-facebook"></i>
+      </a>
+      <a class="nav-link nav-link-sm nav-icon p-0" href="#">
+        <i class="custom-icon fa fa-sm fa-instagram"></i>
+      </a>
+      <a class="nav-link nav-link-sm nav-icon p-0" href="#">
+        <i class="custom-icon fa fa-sm fa-google"></i>
+      </a>
+    </nav>
+
+    <nav class='nav nav-link-sm'>
+
+      <form class="form-inline ml-3 d-none d-md-flex">
+        <span class="input-icon">
+          <i class="material-icons">search</i>
+          <input type="text" placeholder="Search..." class=" form-control bg-gray-200 border-gray-200 rounded-lg"
+                 style='width: 560px;'>
+        </span>
+      </form>
 
 
-      </nav>
+    </nav>
 
-      <nav class="nav nav-circle d-none d-sm-flex">
-        <a class="nav-link nav-link-sm nav-icon p-0" href="#"><i class="custom-icon" data-icon="facebook"
-                                                                 data-size="17x17"></i></a>
-        <a class="nav-link nav-link-sm nav-icon p-0" href="#"><i class="custom-icon" data-icon="twitter"
-                                                                 data-size="17x17"></i></a>
-        <a class="nav-link nav-link-sm nav-icon p-0" href="#"><i class="custom-icon" data-icon="instagram"
-                                                                 data-size="17x17"></i></a>
-      </nav>
+    <nav class="nav  ml-auto mr-1">
 
+      <div class="nav-item nav-pills dropdown">
+        <a class="nav-link nav-link-sm" href="#">
+          About Us
+        </a>
+      </div>
+      <div class="nav-item nav-pills ">
+        <a class="nav-link nav-link-sm" href="#">
+          Services
+        </a>
+      </div>
+      <div class="nav-item nav-pills ">
+        <a class="nav-link nav-link-sm" href="#">
+          Contacts
+        </a>
+      </div>
 
-      <nav class="nav  ml-auto mr-1">
+    </nav>
 
-        <div class="nav-item nav-pills dropdown">
-          <a class="nav-link nav-link-sm" href="#">
-            About Us
+    <nav class="nav" *ngIf='currentUser; else signInButton'>
+
+      <div class="nav-item nav-pills dropdown dropdown-hover">
+        <a class="nav-link nav-link-sm dropdown-toggle has-icon hover" href="#" id="userDropdown" role="button"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+          <i class="material-icons mr-1">person</i>
+          Hi, {{currentUser.firstName}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right font-size-sm" aria-labelledby="userDropdown">
+          <a class="dropdown-item has-icon pr-5" href="/orders">
+            <i class="material-icons mr-2">shopping_cart</i>
+            My Orders
+          </a>
+          <a class="dropdown-item has-icon pr-5" href="/wishlist">
+            <i class="material-icons mr-2">favorite_border</i>
+            Wishlist
+          </a>
+          <a class="dropdown-item has-icon pr-5" [routerLink]="['/profile']">
+            <i class="material-icons mr-2">person</i>
+            Account Setting
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item has-icon pr-5 text-danger" (click)="logOut()">
+            <i class="material-icons mr-2">exit_to_app</i>
+            Sign Out
           </a>
         </div>
-        <div class="nav-item nav-pills ">
-          <a class="nav-link nav-link-sm" href="#">
-            Services
-          </a>
-        </div>
-        <div class="nav-item nav-pills ">
-          <a class="nav-link nav-link-sm" href="#">
-            Contacts
-          </a>
-        </div>
-
-      </nav>
-
-      <nav class="nav" *ngIf='currentUser; else signInButton'>
-
-        <div class="nav-item nav-pills dropdown dropdown-hover">
-          <a class="nav-link nav-link-sm dropdown-toggle has-icon hover" href="#" id="userDropdown" role="button"
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-            <i class="material-icons mr-1">person</i> Hi, {{currentUser.firstName}}
-          </a>
-          <div class="dropdown-menu dropdown-menu-right font-size-sm" aria-labelledby="userDropdown">
-            <a class="dropdown-item has-icon pr-5" href="/orders"><i class="material-icons mr-2">shopping_cart</i>
-              My Orders</a>
-            <a class="dropdown-item has-icon pr-5" href="/wishlist"><i class="material-icons mr-2">favorite_border</i>
-              Wishlist</a>
-            <a class="dropdown-item has-icon pr-5" [routerLink]="['/profile']"><i class="material-icons mr-2">person</i>
-              Account Setting</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item has-icon pr-5 text-danger" (click)="logOut()"><i class="material-icons mr-2">exit_to_app</i>
-              Sign Out</a>
-          </div>
-        </div>
+      </div>
 
 
-      </nav>
+    </nav>
 
-      <nav class="nav nav-gap-x-1 ml-1 mr-1">
-        <div *ngIf='isAdmin()' class="nav-item nav-pills dropdown">
-          <a class="btn-faded-danger btn btn-sm" href="/admin">
-            Admin Panel
-          </a>
-        </div>
-      </nav>
+    <nav class="nav nav-gap-x-1 ml-1 mr-1">
+      <div *ngIf='isAdmin()' class="nav-item nav-pills dropdown">
+        <a class="btn-faded-danger btn btn-sm" href="/admin">
+          Admin Panel
+        </a>
+      </div>
+    </nav>
 
-      <ng-template #signInButton>
-        <button [routerLink]="['/login']" type="button" class="btn btn-faded-primary has-icon btn-sm">
-          <i class="material-icons mr-1">person</i> Sign in
-        </button>
-      </ng-template>
+    <ng-template #signInButton>
+      <button [routerLink]="['/login']" type="button" class="btn btn-faded-primary has-icon btn-sm">
+        <i class="material-icons mr-1">person</i>
+        Sign in
+      </button>
+    </ng-template>
 
 
-    </div>
   </div>
-  <!-- /TOP BAR -->
+</div>
+<!-- /TOP BAR -->
 
-  <!-- HEADER -->
-  <app-header></app-header>
-  <!-- /HEADER -->
+<!-- HEADER -->
+<app-header></app-header>
+<!-- /HEADER -->
 
-  <router-outlet name='popup'></router-outlet>
+<router-outlet name='popup'></router-outlet>
 
-  <!-- BREADCRUMB -->
-  <breadcrumb *ngIf='displayBreadcrumb'></breadcrumb>
-  <!-- BREADCRUMB -->
+<!-- BREADCRUMB -->
+<breadcrumb *ngIf='displayBreadcrumb'></breadcrumb>
+<!-- BREADCRUMB -->
 
-  <!-- HOME SLIDER -->
-  <app-main-slider *ngIf="router.url === '/'"></app-main-slider>
-  <!-- /HOME SLIDER -->
+<!-- HOME SLIDER -->
+<app-main-slider *ngIf="router.url === '/'"></app-main-slider>
+<!-- /HOME SLIDER -->
 
 
-  <div class="container-fluid my-3">
-    <!-- MAIN CONTENT -->
-    <router-outlet></router-outlet>
-  </div>
+<div class="container-fluid my-3">
+  <!-- MAIN CONTENT -->
+  <router-outlet></router-outlet>
+</div>
 
-  <app-footer></app-footer>
+<app-footer></app-footer>
 
 

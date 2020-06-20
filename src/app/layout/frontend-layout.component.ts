@@ -17,7 +17,7 @@ export class FrontendLayoutComponent implements OnInit {
   public displayHomeSlider = false;
 
   constructor(private authService: AuthenticationService,
-              private router: Router,
+              public router: Router,
               private route: ActivatedRoute,
               public sanitizer: DomSanitizer) {
     this.authService.currentUser.subscribe(data => {
