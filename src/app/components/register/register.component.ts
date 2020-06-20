@@ -35,10 +35,10 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/profile']);
       return;
     }
-    this.user.firstName = 'AAAA';
+/*    this.user.firstName = 'AAAA';
     this.user.lastName = 'AAAA';
     this.user.email = 'a@aa.com';
-    this.user.password = 'aaaaaa';
+    this.user.password = 'aaaaaa';*/
   }
 
 
