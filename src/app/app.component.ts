@@ -12,7 +12,7 @@ import {AuthenticationService} from './services/authentication.service';
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  title = 'client-user-management';
+  title = 'zource app';
   currentUser: User;
   @ViewChild(AdminHeaderComponent, {static: false})
   private adminHeader: AdminHeaderComponent;

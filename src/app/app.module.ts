@@ -68,7 +68,7 @@ export function tokenGetter() {
    /* {provide: NZ_I18N, useValue: en_US},*/
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-      AuthGuard,ProductService, BrandService
+      AuthGuard, ProductService, BrandService
   ],
   bootstrap: [AppComponent],
   exports: [
